@@ -186,7 +186,7 @@ const Home = () => {
                 </p>
 
                 {/* Character with Glitch Effect and System Log */}
-                <div className="mb-6 reveal reveal-delay-3 w-full grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-8 items-center max-w-5xl mx-auto">
+                <div className="mb-12 reveal reveal-delay-3 w-full grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-8 items-center max-w-5xl mx-auto" style={{ marginBottom: '3rem' }}>
                     {/* Character Image with Scanlines and Particles */}
                     <div className="relative flex justify-center md:justify-end group">
                         {/* Floating Glitch Particles around character */}
@@ -235,8 +235,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* Glass Info Panel with 3D Tilt */}
-                <div className="glass-panel p-8 mb-8 mx-auto max-w-3xl w-full tilt-card hover-glow reveal reveal-delay-4 organic-float transition-all duration-300 hover:bg-opacity-30">
+                {/* Glass Info Panel with 3D Tilt - Hidden on Mobile */}
+                <div className="hidden md:block glass-panel p-8 mb-8 mx-auto max-w-3xl w-full tilt-card hover-glow reveal reveal-delay-4 organic-float transition-all duration-300 hover:bg-opacity-30">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
                         <div className="flex flex-col items-center md:items-start gap-2 shimmer-item group">
                             <span className="text-3xl group-hover:scale-110 transition-transform duration-300">🫧</span>
