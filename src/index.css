@@ -446,4 +446,10 @@ input::placeholder {
         animation: none !important;
         display: inline;
     }
+
+    .reveal {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+    }
 }
