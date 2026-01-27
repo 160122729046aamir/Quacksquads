@@ -412,3 +412,38 @@ input::placeholder {
         opacity: 0;
     }
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    * {
+        animation-duration: 0s !important;
+        transition: none !important;
+    }
+
+    .underwater-bg::before,
+    .particle,
+    .bubble,
+    .light-beam,
+    .floating-text,
+    .organic-float,
+    .chamber-breathe,
+    .scanlines,
+    .character-glitch-wrapper,
+    .character-glitch {
+        animation: none !important;
+    }
+
+    .glass-panel,
+    .underwater-button,
+    .system-log,
+    input {
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        background: rgba(0, 26, 46, 0.95) !important;
+    }
+
+    .wave-text span {
+        animation: none !important;
+        display: inline;
+    }
+}

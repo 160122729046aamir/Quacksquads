@@ -52,8 +52,19 @@ const Home = () => {
         return () => clearTimeout(timer);
     }, [currentLineIndex, currentCharIndex, isPaused]);
 
-    // Generate bubbles with magnetic effect
-    const bubbles = Array.from({ length: 30 }, (_, i) => ({
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Generate bubbles with magnetic effect - Reduced count on mobile
+    const bubbles = Array.from({ length: isMobile ? 10 : 30 }, (_, i) => ({
         id: i,
         left: Math.random() * 100,
         delay: Math.random() * 5,
@@ -61,8 +72,8 @@ const Home = () => {
         size: 8 + Math.random() * 15
     }));
 
-    // Generate floating particles (plankton)
-    const particles = Array.from({ length: 50 }, (_, i) => ({
+    // Generate floating particles (plankton) - Reduced count on mobile
+    const particles = Array.from({ length: isMobile ? 15 : 50 }, (_, i) => ({
         id: i,
         left: Math.random() * 100,
         delay: Math.random() * 10,
@@ -77,8 +88,10 @@ const Home = () => {
         { left: '75%', delay: 4 }
     ];
 
-    // Mouse move effect for 3D tilt
+    // Mouse move effect for 3D tilt - Disabled on mobile
     useEffect(() => {
+        if (isMobile) return; // Skip on mobile for performance
+
         const handleMouseMove = (e) => {
             const cards = document.querySelectorAll('.tilt-card');
             cards.forEach((card) => {
@@ -92,14 +105,16 @@ const Home = () => {
                 const rotateX = (y - centerY) / 10;
                 const rotateY = (centerX - x) / 10;
 
-                card.style.setProperty('--tilt-x', `${rotateY}deg`);
-                card.style.setProperty('--tilt-y', `${rotateX}deg`);
+                requestAnimationFrame(() => {
+                    card.style.setProperty('--tilt-x', `${rotateY}deg`);
+                    card.style.setProperty('--tilt-y', `${rotateX}deg`);
+                });
             });
         };
 
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+    }, [isMobile]);
 
     return (
         <div ref={containerRef} className="underwater-bg relative overflow-hidden min-h-screen flex flex-col items-center px-4 pb-32" style={{ paddingTop: '1rem' }}>
