@@ -1,0 +1,12 @@
+/* Discover Page - Disable Floating Animations */
+
+/* Remove floating animation from glass panels on Discover page */
+.discover-page .glass-panel {
+    animation: none;
+}
+
+/* Remove floating and pulsing animations from suspension chamber on Discover page */
+.discover-page .suspension-chamber {
+    animation: none;
+    box-shadow: 0 0 60px rgba(0, 245, 255, 0.6), inset 0 0 60px rgba(0, 245, 255, 0.2);
+}
