@@ -239,7 +239,7 @@ const Home = () => {
                 <div className="reveal reveal-delay-5">
                     <Link to="/discover">
                         <button className="underwater-button relative ripple-container">
-                            <span className="relative z-10">🌊 BEGIN DESCENT 🌊</span>
+                            <span className="relative z-10">BEGIN DESCENT</span>
                         </button>
                     </Link>
                 </div>
