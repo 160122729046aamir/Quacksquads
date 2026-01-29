@@ -35,98 +35,159 @@ const DiscoverForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Twitter Input */}
+        <form onSubmit={handleSubmit} className="!space-y-7">
+
+            {/* Twitter */}
             <div className="reveal reveal-delay-1">
-                <label className="block text-cyan-glow text-sm mb-3 font-semibold tracking-wide uppercase">
+                <label className="block text-xs uppercase tracking-[0.3em] text-cyan-300/80 !mb-2 font-semibold">
                     🐠 Twitter Explorer ID
                 </label>
-                <div className="input-wrapper">
+
+                <div className="relative group">
                     <input
                         type="text"
                         name="twitter_username"
                         value={formData.twitter_username}
                         onChange={handleChange}
                         placeholder="@deep_explorer"
-                        className="w-full focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,245,255,0.3)] bg-opacity-80"
                         required
+                        className="
+            w-full
+            rounded-xl
+            bg-slate-900/70
+            border border-white/15
+            !px-4 !py-3
+            text-white
+            placeholder-gray-500
+            transition-all duration-300
+            focus:outline-none
+            focus:border-cyan-400/50
+            focus:shadow-[0_0_25px_rgba(34,211,238,0.35)]
+            group-hover:border-white/30
+          "
                     />
-                    <div className="input-icon">@</div>
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-400/60">
+                        @
+                    </span>
                 </div>
             </div>
 
-            {/* Tweet Link Input */}
+            {/* Tweet */}
             <div className="reveal reveal-delay-2">
-                <label className="block text-cyan-glow text-sm mb-3 font-semibold tracking-wide uppercase">
+                <label className="block text-xs uppercase tracking-[0.3em] text-cyan-300/80 !mb-2 font-semibold">
                     🔗 Signal Beacon Link
                 </label>
-                <div className="input-wrapper">
+
+                <div className="relative group">
                     <input
                         type="url"
                         name="tweet_link"
                         value={formData.tweet_link}
                         onChange={handleChange}
                         placeholder="https://twitter.com/..."
-                        className="w-full focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,245,255,0.3)] bg-opacity-80"
                         required
+                        className="
+            w-full
+            rounded-xl
+            bg-slate-900/70
+            border border-white/15
+            !px-4 !py-3
+            text-white
+            placeholder-gray-500
+            transition-all duration-300
+            focus:outline-none
+            focus:border-cyan-400/50
+            focus:shadow-[0_0_25px_rgba(34,211,238,0.35)]
+            group-hover:border-white/30
+          "
                     />
-                    <div className="input-icon">🔗</div>
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-400/60">
+                        🔗
+                    </span>
                 </div>
             </div>
 
-            {/* Wallet Address Input */}
+            {/* Wallet */}
             <div className="reveal reveal-delay-3">
-                <label className="block text-cyan-glow text-sm mb-3 font-semibold tracking-wide uppercase">
+                <label className="block text-xs uppercase tracking-[0.3em] text-cyan-300/80 !mb-2 font-semibold">
                     💎 Deep Vault Address
                 </label>
-                <div className="input-wrapper">
+
+                <div className="relative group">
                     <input
                         type="text"
                         name="wallet_address"
                         value={formData.wallet_address}
                         onChange={handleChange}
                         placeholder="0x..."
-                        className="w-full focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,245,255,0.3)] bg-opacity-80"
                         required
+                        className="
+            w-full
+            rounded-xl
+            bg-slate-900/70
+            border border-white/15
+            !px-4 !py-3
+            text-white
+            placeholder-gray-500
+            transition-all duration-300
+            focus:outline-none
+            focus:border-cyan-400/50
+            focus:shadow-[0_0_25px_rgba(34,211,238,0.35)]
+            group-hover:border-white/30
+          "
                     />
-                    <div className="input-icon">💎</div>
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-400/60">
+                        💎
+                    </span>
                 </div>
             </div>
 
-            {/* Submit Button */}
-            <div className="reveal reveal-delay-4 relative pt-4">
+            {/* Submit */}
+            <div className="reveal reveal-delay-4 !pt-4 relative">
                 <button
                     type="submit"
                     disabled={isDiving}
-                    className="underwater-button w-full ripple-container text-lg font-bold"
+                    className="
+          relative w-full
+          rounded-xl
+          !py-3
+          font-bold tracking-widest
+          text-black
+          bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400
+          transition-all duration-300
+          hover:shadow-[0_0_35px_rgba(34,211,238,0.6)]
+          hover:-translate-y-0.5
+          disabled:opacity-70
+        "
                 >
                     {isDiving ? (
                         <span className="flex items-center justify-center gap-3">
-                            <span className="animate-bounce">🌊</span>
-                            DESCENDING...
-                            <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>🌊</span>
+                            <span className="animate-pulse">🌊</span>
+                            DESCENDING
+                            <span className="animate-pulse">🌊</span>
                         </span>
                     ) : (
                         '🫧 DIVE DEEPER 🫧'
                     )}
                 </button>
 
-                {/* Success Burst Animation */}
-                {showSuccess && (
-                    <>
-                        <div className="success-burst" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}></div>
-                        <div className="success-burst" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', animationDelay: '0.2s' }}></div>
-                    </>
+                {/* Loading bar */}
+                {isDiving && (
+                    <div className="absolute left-0 right-0 -bottom-3 h-1 rounded-full overflow-hidden bg-white/10">
+                        <div className="h-full w-full bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-400 animate-pulse" />
+                    </div>
                 )}
             </div>
 
-            {isDiving && (
-                <div className="h-2 bg-gradient-to-r from-cyan-glow via-teal-bright to-cyan-glow rounded-full overflow-hidden loading-wave mt-4">
-                    <div className="h-full bg-white animate-pulse"></div>
+            {/* Success */}
+            {showSuccess && (
+                <div className="text-center text-cyan-300 text-sm font-semibold animate-fade-in">
+                    🌊 Coordinates received. Welcome to the Deep.
                 </div>
             )}
         </form>
-    );
+    )
+
 };
 
 export default DiscoverForm;

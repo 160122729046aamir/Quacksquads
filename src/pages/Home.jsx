@@ -163,9 +163,9 @@ const Home = () => {
             {/* Depth Fog */}
             <div className="depth-fog"></div>
 
-            <div className="relative z-10 text-center max-w-5xl w-full px-6">
+            <div className="relative z-10 text-center max-w-5xl w-full !px-6">
                 {/* Main Title with Wave Effect */}
-                <h1 className="text-7xl md:text-9xl font-bold mb-16 bio-glow wave-text reveal pt-12 md:pt-0" style={{ marginBottom: '1rem' }}>
+                <h1 className="text-7xl md:text-9xl font-bold bio-glow wave-text reveal !md:pt-0">
                     <span>D</span>
                     <span>E</span>
                     <span>E</span>
@@ -177,16 +177,16 @@ const Home = () => {
                     <span>E</span>
                 </h1>
 
-                <p className="text-2xl md:text-3xl mb-6 text-aqua-light floating-text reveal reveal-delay-1">
+                <p className="text-2xl md:text-3xl text-aqua-light floating-text reveal reveal-delay-1">
                     🌊 Descend into the Abyss
                 </p>
 
-                <p className="text-lg md:text-xl text-cyan-glow opacity-80 floating-text reveal reveal-delay-2" style={{ marginBottom: '6rem' }}>
+                <p className="text-lg md:text-xl text-cyan-glow opacity-80 floating-text reveal reveal-delay-2" style={{ marginBottom: '3rem' }}>
                     An immersive underwater experience awaits
                 </p>
 
                 {/* Character with Glitch Effect and System Log */}
-                <div className="mb-12 reveal reveal-delay-3 w-full grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-8 items-center max-w-5xl mx-auto" style={{ marginBottom: '3rem' }}>
+                <div className="!mb-12 reveal reveal-delay-3 w-full grid grid-cols-1 md:grid-cols-2 !gap-y-12 md:gap-8 items-center max-w-5xl !mx-auto" style={{ marginBottom: '3rem' }}>
                     {/* Character Image with Scanlines and Particles */}
                     <div className="relative flex justify-center md:justify-end group">
                         {/* Floating Glitch Particles around character */}
@@ -208,26 +208,26 @@ const Home = () => {
                     </div>
 
                     {/* System Log */}
-                    <div className="flex justify-center md:justify-start w-full">
+                    <div className="flex justify-center md:justify-start !w-full">
                         <div className="system-log text-left bg-black/60 backdrop-blur-xl border border-cyan-500/30 p-8 rounded-2xl w-full max-w-md shadow-[0_0_40px_rgba(0,245,255,0.15)] hover:shadow-[0_0_50px_rgba(0,245,255,0.25)] transition-all duration-300 hover:-translate-y-1 h-[320px] flex flex-col">
-                            <h3 className="text-cyan-glow text-xs font-bold mb-4 flex items-center gap-2 uppercase tracking-widest border-b border-cyan-500/20 pb-3">
-                                <span className="inline-block w-2 h-2 rounded-full bg-bio-glow animate-pulse"></span>
+                            <h3 className="text-cyan-glow text-xs font-bold !mb-4 flex items-center !gap-2 uppercase tracking-widest border-b border-cyan-500/20 !pb-3">
+                                <span className="inline-block !w-2 !h-2 rounded-full bg-bio-glow animate-pulse"></span>
                                 SYSTEM_LOG // TERMINAL_01
                             </h3>
-                            <div className="space-y-3 text-sm font-mono overflow-hidden flex flex-col justify-end flex-grow">
+                            <div className="!space-y-3 text-sm font-mono overflow-hidden flex flex-col justify-end flex-grow">
                                 {displayedLines.map((line, index) => (
                                     <p key={index} className={index === logLines.length - 1 ? "text-bio-glow font-bold typing-effect" : "text-teal-bright opacity-80"}>
-                                        <span className="text-bio-glow mr-2 opacity-50">&gt;</span>
+                                        <span className="text-bio-glow !mr-2 opacity-50">&gt;</span>
                                         {line}
                                         {((index === currentLineIndex && !isPaused) || (isPaused && index === logLines.length - 1)) && (
-                                            <span className="cursor ml-1">_</span>
+                                            <span className="cursor !ml-1">_</span>
                                         )}
                                     </p>
                                 ))}
                             </div>
 
                             {/* Decorative footer for log */}
-                            <div className="mt-4 pt-3 border-t border-cyan-500/10 flex justify-between text-[10px] text-cyan-500/40 uppercase tracking-widest">
+                            <div className="!pt-3 border-t border-cyan-500/10 flex justify-between text-[10px] text-cyan-500/40 uppercase tracking-widest">
                                 <span>Sys.Ver 2.0.4</span>
                                 <span>Conn: Secure</span>
                             </div>
@@ -235,42 +235,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* Glass Info Panel with 3D Tilt - Hidden on Mobile */}
-                <div className="hidden md:block glass-panel p-8 mb-8 mx-auto max-w-3xl w-full tilt-card hover-glow reveal reveal-delay-4 organic-float transition-all duration-300 hover:bg-opacity-30">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-                        <div className="flex flex-col items-center md:items-start gap-2 shimmer-item group">
-                            <span className="text-3xl group-hover:scale-110 transition-transform duration-300">🫧</span>
-                            <div>
-                                <p className="text-cyan-glow/70 text-xs uppercase tracking-wider font-semibold">Depth</p>
-                                <p className="text-white bio-glow font-mono text-lg">2,847m</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-center md:items-start gap-2 group">
-                            <span className="text-3xl group-hover:scale-110 transition-transform duration-300">💠</span>
-                            <div>
-                                <p className="text-cyan-glow/70 text-xs uppercase tracking-wider font-semibold">Pressure</p>
-                                <p className="text-white bio-glow font-mono text-lg">284 atm</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-center md:items-start gap-2 group">
-                            <span className="text-3xl group-hover:scale-110 transition-transform duration-300">🌡️</span>
-                            <div>
-                                <p className="text-cyan-glow/70 text-xs uppercase tracking-wider font-semibold">Temp</p>
-                                <p className="text-white bio-glow font-mono text-lg">4°C</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-center md:items-start gap-2 group">
-                            <span className="text-3xl group-hover:scale-110 transition-transform duration-300">✨</span>
-                            <div>
-                                <p className="text-cyan-glow/70 text-xs uppercase tracking-wider font-semibold">Status</p>
-                                <p className="text-bio-glow animate-pulse font-mono text-lg">Online</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 {/* Dive Button with Ripple Effect */}
-                <div className="reveal reveal-delay-5 mb-12">
+                <div className="reveal reveal-delay-5">
                     <Link to="/discover">
                         <button className="underwater-button relative ripple-container">
                             <span className="relative z-10">🌊 BEGIN DESCENT 🌊</span>

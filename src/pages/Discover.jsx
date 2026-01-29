@@ -86,14 +86,35 @@ const Discover = () => {
             <div className="depth-fog"></div>
 
             {/* Header - Fixed Spacing */}
-            <div className="relative z-10 text-center mb-16 md:mb-24 reveal mt-12 md:mt-0" style={{ paddingBottom: '15px' }}>
-                <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                    Discovery <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">Chamber</span>
+            <div className="relative z-10 text-center !mb-6 md:!mb-6 reveal md:!mt-0 overflow-hidden">
+
+                {/* Ambient animated glow */}
+                <div className="absolute inset-0 flex justify-center pointer-events-none">
+                    <div className="w-[420px] h-[420px] rounded-full bg-cyan-400/10 blur-3xl animate-glow-breathe" />
+                </div>
+
+                {/* Heading */}
+                <h2 className="relative text-5xl md:text-7xl font-extrabold tracking-tight !mb-5 leading-tight animate-title-reveal">
+                    <span className="text-white">
+                        Discovery
+                    </span>{' '}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-teal-300 to-emerald-300 animate-gradient-drift">
+                        Chamber
+                    </span>
                 </h2>
-                <p className="text-xl text-gray-300 tracking-widest uppercase opacity-80">
-                    // Coordinates Required for Deep Dive Access //
+
+                {/* Divider */}
+                <div className="flex justify-center !mb-4">
+                    <span className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-divider-draw" />
+                </div>
+
+                {/* Subtext */}
+                <p className="text-sm md:text-base text-gray-400 tracking-[0.35em] uppercase animate-subtitle-reveal">
+                    Coordinates Required · Deep Dive Access
                 </p>
             </div>
+
+
 
             {/* Main Content */}
             <div className="relative z-10 mx-auto w-full px-6" style={{ maxWidth: '1400px' }}>
@@ -101,14 +122,37 @@ const Discover = () => {
 
                     {/* Left - Suspension Chamber */}
                     <div className="flex flex-col items-center reveal reveal-delay-1">
-                        <div className="relative w-full max-w-lg">
-                            {/* Suspension Chamber */}
-                            <div className="relative suspension-chamber w-full aspect-square p-8 flex items-center justify-center chamber-breathe mb-6">
-                                {/* Chamber Interior Bubbles */}
+                        <div className="relative w-full max-w-lg group">
+
+                            {/* === SUSPENSION CHAMBER === */}
+                            <div
+                                className="
+        relative w-full aspect-square
+        flex items-center justify-center
+        rounded-3xl
+        bg-slate-900/60
+        border border-cyan-400/20
+        !p-8
+        overflow-hidden
+        transition-all duration-700
+        hover:border-cyan-400/40
+        hover:shadow-[0_0_120px_rgba(34,211,238,0.25)]
+      "
+                            >
+                                {/* Energy ring */}
+                                <div className="absolute inset-6 rounded-full border border-cyan-400/20 animate-spin-slow pointer-events-none" />
+                                <div className="absolute inset-12 rounded-full border border-teal-400/15 animate-spin-reverse-slow pointer-events-none" />
+
+                                {/* Ambient glow */}
+                                <div className="absolute inset-0 pointer-events-none">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-teal-400/10 blur-2xl" />
+                                </div>
+
+                                {/* Chamber bubbles */}
                                 {chamberBubbles.map((bubble) => (
                                     <div
                                         key={`chamber-bubble-${bubble.id}`}
-                                        className="bubble absolute z-20"
+                                        className="bubble absolute z-20 opacity-60"
                                         style={{
                                             left: `${bubble.left}%`,
                                             bottom: `${bubble.bottom}%`,
@@ -120,123 +164,226 @@ const Discover = () => {
                                     />
                                 ))}
 
-                                {/* Main Image */}
+                                {/* Astronaut */}
                                 <img
                                     src="/assets/underwater-astronaut.png"
                                     alt="Deep Sea Explorer in Suspension"
-                                    className="w-full h-full object-contain organic-float relative z-10"
+                                    className="
+          w-full h-full object-contain
+          relative z-10
+          animate-float-slow
+          transition-transform duration-700
+          group-hover:scale-[1.03]
+        "
                                 />
                             </div>
 
-                            {/* Chamber Label - BELOW chamber */}
-                            <div className="text-center mb-6">
-                                <p className="text-sm text-cyan-glow font-medium flex items-center justify-center gap-3">
-                                    <span className="bio-glow">CHAMBER_ID.sequence</span>
-                                    <span className="text-bio-glow flex items-center gap-1">
-                                        <span className="inline-block w-2 h-2 rounded-full bg-bio-glow animate-pulse"></span>
+                            {/* === CHAMBER STATUS === */}
+                            <div className="text-center !mt-5 !mb-6">
+                                <p className="text-xs uppercase tracking-[0.35em] text-cyan-300/80 flex items-center justify-center gap-3">
+                                    <span className="font-semibold">CHAMBER_ID · sequence</span>
+                                    <span className="flex items-center gap-2 text-teal-300">
+                                        <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
                                         ACTIVE
                                     </span>
                                 </p>
                             </div>
 
-                            {/* Chamber Stats - Fixed Grid */}
-                            <div className="glass-panel p-6 md:p-8" style={{ padding: '15px' }}>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                    <div className="text-left">
-                                        <p className="text-gray-400 text-xs font-medium mb-2 uppercase tracking-wider">Oxygen Level</p>
-                                        <p className="text-bio-glow text-2xl md:text-3xl font-bold">98.2%</p>
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-gray-400 text-xs font-medium mb-2 uppercase tracking-wider">Bio Readings</p>
-                                        <p className="text-cyan-glow text-2xl md:text-3xl font-bold">Stable</p>
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-gray-400 text-xs font-medium mb-2 uppercase tracking-wider">Depth</p>
-                                        <p className="text-teal-bright text-2xl md:text-3xl font-bold">2,847m</p>
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-gray-400 text-xs font-medium mb-2 uppercase tracking-wider">Active Explorers</p>
-                                        <p className="text-aqua-light text-2xl md:text-3xl font-bold animate-pulse">127</p>
-                                    </div>
+                            {/* === STATS PANEL === */}
+                            <div
+                                className="
+        relative
+        rounded-2xl
+        bg-slate-900/75 backdrop-blur-xl
+        border border-white/10
+        !p-5 md:!p-6
+        transition-all duration-500
+        hover:border-cyan-400/30
+      "
+                            >
+                                {/* Subtle HUD grid */}
+                                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-30 rounded-2xl" />
+
+                                <div className="relative grid grid-cols-1 sm:grid-cols-2 !gap-5">
+                                    {[
+                                        { label: 'Oxygen Level', value: '98.2%', color: 'text-teal-300' },
+                                        { label: 'Bio Readings', value: 'Stable', color: 'text-cyan-300' },
+                                        { label: 'Depth', value: '2,847m', color: 'text-emerald-300' },
+                                        { label: 'Active Explorers', value: '127', color: 'text-aqua-light animate-pulse' },
+                                    ].map((stat, i) => (
+                                        <div key={i} className="text-left">
+                                            <p className="text-gray-400 text-[11px] font-medium uppercase tracking-widest !mb-1">
+                                                {stat.label}
+                                            </p>
+                                            <p className={`text-2xl md:text-3xl font-bold ${stat.color}`}>
+                                                {stat.value}
+                                            </p>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     {/* Right - Discovery Panel - Proper Padding and Alignment */}
                     <div className="reveal reveal-delay-2 w-full max-w-xl">
-                        <div className="glass-panel p-10">
-                            {/* Header with Bottom Spacing */}
-                            <div className="mb-10 pb-6 border-b border-cyan-glow/20">
-                                <h3 className="text-3xl font-bold bio-glow tracking-wide flex items-center gap-3 border-b-2 border-cyan-glow/30 pb-4 inline-block">
-                                    <span>🌊</span>
-                                    <span>Access Protocol</span>
+                        <div
+                            className="
+      relative group
+      rounded-3xl
+      bg-slate-900/80 backdrop-blur-xl
+      border border-white/15
+      !p-8 md:!p-9
+      overflow-hidden
+      transition-all duration-500
+      hover:border-cyan-400/40
+      hover:shadow-[0_30px_80px_-35px_rgba(34,211,238,0.4)]
+    "
+                        >
+                            {/* Soft glow */}
+                            <div className="absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-400/25 via-teal-400/10 to-transparent blur-xl" />
+                            </div>
+
+                            {/* Subtle sheen */}
+                            <div
+                                className="
+        absolute inset-0
+        bg-gradient-to-r from-transparent via-white/8 to-transparent
+        translate-x-[-120%]
+        group-hover:translate-x-[120%]
+        transition-transform duration-[1300ms]
+        pointer-events-none
+      "
+                            />
+
+                            {/* Header */}
+                            <div className="relative !mb-8 !pb-4 border-b border-cyan-400/20">
+                                <h3 className="text-2xl font-bold flex items-center gap-2">
+                                    <span className="text-3xl">🌊</span>
+                                    <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-emerald-300 bg-clip-text text-transparent">
+                                        Access Protocol
+                                    </span>
                                 </h3>
                             </div>
 
-                            {/* Steps - Better Alignment */}
-                            <div className="access-list mb-10">
-                                <div className="access-item">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center text-3xl bg-cyan-glow/10 rounded-full border border-cyan-glow/30 shadow-[0_0_15px_rgba(0,245,255,0.2)]">
-                                        🐙
-                                    </div>
-                                    <div className="flex-1 pt-1">
-                                        <p className="text-cyan-glow font-semibold text-lg mb-2">Step 1: Follow the Current</p>
-                                        <p className="text-sm text-gray-400 leading-relaxed font-light">
-                                            Connect with{' '}
-                                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                                className="text-teal-bright hover:text-cyan-glow underline font-medium">
-                                                @deep_dive_labs
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
+                            {/* Steps */}
+                            <div className="relative !space-y-6 !mb-8">
+                                {[
+                                    {
+                                        icon: '🐙',
+                                        title: 'Follow the Current',
+                                        text: (
+                                            <>
+                                                Connect with{' '}
+                                                <a
+                                                    href="https://twitter.com"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-teal-300 hover:text-cyan-300 underline font-medium transition-colors"
+                                                >
+                                                    @deep_dive_labs
+                                                </a>
+                                            </>
+                                        ),
+                                    },
+                                    {
+                                        icon: '🪸',
+                                        title: 'Amplify Signal',
+                                        text: (
+                                            <>
+                                                Share the{' '}
+                                                <a
+                                                    href="https://twitter.com"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-teal-300 hover:text-cyan-300 underline font-medium transition-colors"
+                                                >
+                                                    discovery beacon
+                                                </a>
+                                            </>
+                                        ),
+                                    },
+                                    {
+                                        icon: '🐚',
+                                        title: 'Drop Coordinates',
+                                        text: (
+                                            <>
+                                                Reply with your vault on{' '}
+                                                <a
+                                                    href="https://twitter.com"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-teal-300 hover:text-cyan-300 underline font-medium transition-colors"
+                                                >
+                                                    this post
+                                                </a>
+                                            </>
+                                        ),
+                                    },
+                                ].map((step, i) => (
+                                    <div
+                                        key={i}
+                                        className="
+            group/step
+            flex gap-4 items-start
+            transition-all duration-300
+            hover:translate-x-0.5
+          "
+                                    >
+                                        {/* Icon */}
+                                        <div
+                                            className="
+              flex-shrink-0
+              w-10 h-10
+              rounded-full
+              flex items-center justify-center
+              text-2xl
+              bg-cyan-400/10
+              border border-cyan-400/25
+              shadow-[0_0_15px_rgba(34,211,238,0.2)]
+              transition-all duration-300
+              group-hover/step:shadow-[0_0_22px_rgba(34,211,238,0.45)]
+              group-hover/step:scale-105
+            "
+                                        >
+                                            {step.icon}
+                                        </div>
 
-                                <div className="access-item">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center text-3xl bg-cyan-glow/10 rounded-full border border-cyan-glow/30 shadow-[0_0_15px_rgba(0,245,255,0.2)]">
-                                        🪸
+                                        {/* Text */}
+                                        <div className="flex-1 !pt-0.5">
+                                            <p className="text-cyan-300 font-semibold text-base !mb-1">
+                                                {step.title}
+                                            </p>
+                                            <p className="text-sm text-gray-400 leading-relaxed font-light">
+                                                {step.text}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div className="flex-1 pt-1">
-                                        <p className="text-cyan-glow font-semibold text-lg mb-2">Step 2: Amplify Signal</p>
-                                        <p className="text-sm text-gray-400 leading-relaxed font-light">
-                                            Share the{' '}
-                                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                                className="text-teal-bright hover:text-cyan-glow underline font-medium">
-                                                discovery beacon
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="access-item">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center text-3xl bg-cyan-glow/10 rounded-full border border-cyan-glow/30 shadow-[0_0_15px_rgba(0,245,255,0.2)]">
-                                        🐚
-                                    </div>
-                                    <div className="flex-1 pt-1">
-                                        <p className="text-cyan-glow font-semibold text-lg mb-2">Step 3: Drop Coordinates</p>
-                                        <p className="text-sm text-gray-400 leading-relaxed font-light">
-                                            Reply with your vault on{' '}
-                                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                                className="text-teal-bright hover:text-cyan-glow underline font-medium">
-                                                this post
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
 
                             {/* Form Section */}
-                            <div className="border-t border-cyan-glow/30 pt-10">
-                                <div className="mb-8">
-                                    <p className="text-cyan-glow font-semibold text-2xl flex items-center gap-2">
-                                        <span>🫧</span>
-                                        <span>Complete Dive Registration</span>
+                            <div className="relative border-t border-cyan-400/25 !pt-6">
+                                <div className="!mb-5">
+                                    <p className="text-lg font-semibold flex items-center gap-2">
+                                        <span className="text-2xl">🫧</span>
+                                        <span className="bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                                            Complete Dive Registration
+                                        </span>
                                     </p>
                                 </div>
+
                                 <DiscoverForm />
                             </div>
+
+                            {/* Bottom accent */}
+                            <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-cyan-400/35 to-transparent" />
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
