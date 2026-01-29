@@ -98,6 +98,15 @@ body {
     }
 }
 
+/* Utility to hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 /* Glass Panel Effect */
 .glass-panel {
     background: rgba(0, 61, 92, 0.25);
@@ -415,10 +424,12 @@ input::placeholder {
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
+    /* 
     * {
         animation-duration: 0s !important;
         transition: none !important;
-    }
+    } 
+    */
 
     .underwater-bg::before,
     .particle,

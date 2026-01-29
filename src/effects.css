@@ -365,3 +365,117 @@
     pointer-events: none;
     animation: bio-trail 1s ease-out forwards;
 }
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-move 6s linear infinite;
+}
+
+@keyframes underline-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-underline {
+  animation: underline-slide 3s linear infinite;
+}
+
+/* Card fade-in (staggered) */
+@keyframes card-fade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card-fade {
+  animation: card-fade 700ms ease-out forwards;
+}
+
+/* Breathing glow (idle life) */
+@keyframes glow-breathe {
+  0%, 100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.animate-glow-breathe {
+  animation: glow-breathe 6s ease-in-out infinite;
+}
+
+/* Multiplier pulse (subtle prestige) */
+@keyframes multiplier-pulse {
+  0%, 100% {
+    text-shadow: 0 0 0 rgba(255,255,255,0);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255,255,255,0.35);
+  }
+}
+
+.animate-multiplier-pulse {
+  animation: multiplier-pulse 4s ease-in-out infinite;
+}
+
+/* Slow drifting glow */
+@keyframes glow-drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, 20px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-glow-drift {
+  animation: glow-drift 12s ease-in-out infinite;
+}
+
+/* Badge pulse */
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(34,211,238,0);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(34,211,238,0.4);
+  }
+}
+
+.animate-badge-pulse {
+  animation: badge-pulse 4s ease-in-out infinite;
+}
+
+/* Progress fill (initial load) */
+@keyframes progress-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.animate-progress-fill {
+  transform-origin: left;
+  animation: progress-fill 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* Marker pulse */
+@keyframes marker-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(34,211,238,0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34,211,238,0.7);
+  }
+}
+
+.animate-marker-pulse {
+  animation: marker-pulse 3s ease-in-out infinite;
+}
+

@@ -39,7 +39,7 @@ const Discover = () => {
     ];
 
     return (
-        <div className="discover-page underwater-bg relative min-h-screen px-6 py-32 md:py-40 md:px-12 lg:px-20 xl:px-32 overflow-hidden flex flex-col justify-center pb-32" style={{ paddingBottom: '15px' }}>
+        <div className="discover-page underwater-bg relative min-h-screen px-6 pb-32 md:px-12 lg:px-20 xl:px-32 overflow-hidden flex flex-col justify-center" style={{ paddingBottom: '15px', paddingTop: '90px' }}>
             {/* Light Beams */}
             {lightBeams.map((beam, i) => (
                 <div
@@ -86,11 +86,11 @@ const Discover = () => {
             <div className="depth-fog"></div>
 
             {/* Header - Fixed Spacing */}
-            <div className="relative z-10 text-center mb-16 md:mb-24 reveal mt-12 md:mt-0" style={{ marginBottom: '20px' }}>
-                <h2 className="text-5xl md:text-7xl font-bold bio-glow mb-6 tracking-wide uppercase leading-tight">
-                    Discovery Chamber
+            <div className="relative z-10 text-center mb-16 md:mb-24 reveal mt-12 md:mt-0" style={{ paddingBottom: '15px' }}>
+                <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                    Discovery <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">Chamber</span>
                 </h2>
-                <p className="text-cyan-glow text-lg md:text-xl font-light tracking-widest uppercase opacity-80">
+                <p className="text-xl text-gray-300 tracking-widest uppercase opacity-80">
                     // Coordinates Required for Deep Dive Access //
                 </p>
             </div>
