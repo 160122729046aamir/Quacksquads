@@ -497,3 +497,31 @@
 .animate-spin-reverse-slow {
   animation: spinSlow 50s linear infinite reverse;
 }
+@keyframes underline-draw {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.animate-underline-draw {
+  transform-origin: center;
+  animation: underline-draw 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.animate-underline-draw {
+  animation:
+    underline-draw 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    underline-glow 2.5s ease-in-out infinite 0.9s;
+}
+
+@keyframes underline-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}

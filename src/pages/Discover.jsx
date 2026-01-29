@@ -104,9 +104,19 @@ const Discover = () => {
                 </h2>
 
                 {/* Divider */}
-                <div className="flex justify-center !mb-4">
-                    <span className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-divider-draw" />
+                <div className="flex justify-center !mb-5 relative z-20">
+                    <span className="relative h-[2px] w-28 overflow-hidden">
+                        <span
+                            className="
+        absolute inset-0
+        bg-gradient-to-r from-transparent via-cyan-400 to-transparent
+        animate-underline-draw
+      "
+                        />
+                    </span>
                 </div>
+
+
 
                 {/* Subtext */}
                 <p className="text-sm md:text-base text-gray-400 tracking-[0.35em] uppercase animate-subtitle-reveal">
@@ -122,66 +132,66 @@ const Discover = () => {
 
                     {/* Left - Suspension Chamber */}
                     <div className="flex flex-col items-center reveal reveal-delay-1">
-                        <div className="relative w-full max-w-lg group">
+                        <div className="relative w-full max-w-lg">
 
-                            {/* === SUSPENSION CHAMBER === */}
+                            {/* ================= CHAMBER FRAME ================= */}
                             <div
                                 className="
-        relative w-full aspect-square
-        flex items-center justify-center
-        rounded-3xl
-        bg-slate-900/60
-        border border-cyan-400/20
-        !p-8
+        relative
+        w-full
+        rounded-[28px]
         overflow-hidden
+        bg-slate-900/80
+        border border-cyan-400/30
         transition-all duration-700
-        hover:border-cyan-400/40
-        hover:shadow-[0_0_120px_rgba(34,211,238,0.25)]
+        hover:border-cyan-400/60
+        hover:shadow-[0_0_160px_rgba(34,211,238,0.45)]
       "
                             >
-                                {/* Energy ring */}
-                                <div className="absolute inset-6 rounded-full border border-cyan-400/20 animate-spin-slow pointer-events-none" />
-                                <div className="absolute inset-12 rounded-full border border-teal-400/15 animate-spin-reverse-slow pointer-events-none" />
+                                {/* === IMAGE (NO PADDING, FULL FIT) === */}
+                                <img
+                                    src="/assets/underwater-astronaut.png"
+                                    alt="Suspended Explorer"
+                                    className="
+          w-full
+          h-auto
+          object-cover
+          relative z-10
+          animate-float-slow
+        "
+                                />
 
-                                {/* Ambient glow */}
-                                <div className="absolute inset-0 pointer-events-none">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-teal-400/10 blur-2xl" />
+                                {/* === GLASS LAYER === */}
+                                <div className="absolute inset-0 z-20 pointer-events-none">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/15 via-transparent to-teal-400/15" />
+                                    <div className="absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/10" />
                                 </div>
 
-                                {/* Chamber bubbles */}
+                                {/* === ENERGY RINGS === */}
+                                <div className="absolute inset-6 rounded-full border border-cyan-400/25 animate-spin-slow pointer-events-none z-30" />
+                                <div className="absolute inset-10 rounded-full border border-teal-400/20 animate-spin-reverse-slow pointer-events-none z-30" />
+
+                                {/* === BUBBLES === */}
                                 {chamberBubbles.map((bubble) => (
                                     <div
-                                        key={`chamber-bubble-${bubble.id}`}
-                                        className="bubble absolute z-20 opacity-60"
+                                        key={bubble.id}
+                                        className="bubble absolute z-40 opacity-70"
                                         style={{
                                             left: `${bubble.left}%`,
                                             bottom: `${bubble.bottom}%`,
                                             animationDelay: `${bubble.delay}s`,
                                             animationDuration: `${bubble.duration}s`,
                                             width: `${bubble.size}px`,
-                                            height: `${bubble.size}px`
+                                            height: `${bubble.size}px`,
                                         }}
                                     />
                                 ))}
-
-                                {/* Astronaut */}
-                                <img
-                                    src="/assets/underwater-astronaut.png"
-                                    alt="Deep Sea Explorer in Suspension"
-                                    className="
-          w-full h-full object-contain
-          relative z-10
-          animate-float-slow
-          transition-transform duration-700
-          group-hover:scale-[1.03]
-        "
-                                />
                             </div>
 
-                            {/* === CHAMBER STATUS === */}
-                            <div className="text-center !mt-5 !mb-6">
-                                <p className="text-xs uppercase tracking-[0.35em] text-cyan-300/80 flex items-center justify-center gap-3">
-                                    <span className="font-semibold">CHAMBER_ID · sequence</span>
+                            {/* ================= STATUS ================= */}
+                            <div className="text-center !mt-6">
+                                <p className="text-xs uppercase tracking-[0.35em] text-cyan-300/80 flex items-center justify-center gap-4">
+                                    <span className="font-semibold">CHAMBER_ID · SEQUENCE</span>
                                     <span className="flex items-center gap-2 text-teal-300">
                                         <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
                                         ACTIVE
@@ -189,10 +199,11 @@ const Discover = () => {
                                 </p>
                             </div>
 
-                            {/* === STATS PANEL === */}
+                            {/* ================= STATS ================= */}
                             <div
                                 className="
         relative
+        !mt-6
         rounded-2xl
         bg-slate-900/75 backdrop-blur-xl
         border border-white/10
@@ -201,30 +212,30 @@ const Discover = () => {
         hover:border-cyan-400/30
       "
                             >
-                                {/* Subtle HUD grid */}
-                                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-30 rounded-2xl" />
+                                {/* HUD GRID */}
+                                <div className="absolute inset-0 rounded-2xl bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px] opacity-30 pointer-events-none" />
 
-                                <div className="relative grid grid-cols-1 sm:grid-cols-2 !gap-5">
+                                <div className="relative grid grid-cols-2 !gap-5">
                                     {[
-                                        { label: 'Oxygen Level', value: '98.2%', color: 'text-teal-300' },
-                                        { label: 'Bio Readings', value: 'Stable', color: 'text-cyan-300' },
+                                        { label: 'Oxygen', value: '98.2%', color: 'text-teal-300' },
+                                        { label: 'Bio State', value: 'Stable', color: 'text-cyan-300' },
                                         { label: 'Depth', value: '2,847m', color: 'text-emerald-300' },
-                                        { label: 'Active Explorers', value: '127', color: 'text-aqua-light animate-pulse' },
+                                        { label: 'Explorers', value: '127', color: 'text-aqua-light animate-pulse' },
                                     ].map((stat, i) => (
-                                        <div key={i} className="text-left">
-                                            <p className="text-gray-400 text-[11px] font-medium uppercase tracking-widest !mb-1">
+                                        <div key={i}>
+                                            <p className="text-[11px] uppercase tracking-widest text-gray-400 !mb-1">
                                                 {stat.label}
                                             </p>
-                                            <p className={`text-2xl md:text-3xl font-bold ${stat.color}`}>
+                                            <p className={`text-2xl font-bold ${stat.color}`}>
                                                 {stat.value}
                                             </p>
                                         </div>
                                     ))}
                                 </div>
                             </div>
+
                         </div>
                     </div>
-
 
                     {/* Right - Discovery Panel - Proper Padding and Alignment */}
                     <div className="reveal reveal-delay-2 w-full max-w-xl">
