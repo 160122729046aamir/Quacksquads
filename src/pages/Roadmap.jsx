@@ -12,7 +12,7 @@ const Roadmap = () => {
                 'Launch exclusive NFT collection',
                 'Establish core community channels'
             ],
-            status: 'done'
+            status: 'active'
         },
         {
             id: 'Phase 02',
@@ -23,7 +23,7 @@ const Roadmap = () => {
                 'Develop secure backend infrastructure',
                 'Implement Weekly Points System logic'
             ],
-            status: 'active'
+            status: 'pending'
         },
         {
             id: 'Phase 03',
@@ -60,17 +60,22 @@ const Roadmap = () => {
             <div className="depth-fog" />
 
             <div className="max-w-6xl w-full relative z-10">
-
                 {/* Header */}
-                <div className="text-center !mb-24 reveal">
-                    <h1 className="text-5xl md:text-6xl font-bold text-white !mb-4 tracking-tight">
-                        Roadmap
+                <div className="text-center !mb-14 reveal">
+                    <div className="inline-flex items-center !gap-2 !mb-3 bg-slate-900/70 border border-cyan-500/40 rounded-full !px-4 !py-1.5 backdrop-blur-xl shadow-[0_0_22px_rgba(0,245,255,0.35)]">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.9)]" />
+                        <span className="text-[11px] tracking-[0.22em] uppercase text-cyan-100/85">
+                            Protocol Evolution · Milestones
+                        </span>
+                    </div>
+
+                    <h1 className="text-4xl md:text-5xl font-bold text-white !mb-3 tracking-tight">
+                        Protocol Roadmap
                     </h1>
-                    <p className="text-cyan-400 text-sm uppercase tracking-[0.35em] opacity-80">
-                        Protocol Evolution
+                    <p className="text-cyan-300 text-xs md:text-sm uppercase tracking-[0.35em] opacity-80">
+                        From Foundations to Expansion
                     </p>
                 </div>
-
                 {/* Timeline */}
                 <div className="relative">
 
@@ -176,17 +181,16 @@ const Roadmap = () => {
                                                 {phase.items.map((item, idx) => (
                                                     <li
                                                         key={idx}
-                                                        className={`
+                                                        className="
                   group/item
-                  flex items-start gap-3 text-sm
+                  flex items-start !gap-3 text-sm
                   transition-all duration-300
                   text-gray-300 hover:text-white
-                  ${isLeft ? 'justify-start' : 'justify-end md:flex-row-reverse'}
-                `}
+                "
                                                     >
                                                         <span
                                                             className="
-                    mt-2 w-1.5 h-1.5 rounded-full
+                    !mt-2 w-1.5 h-1.5 rounded-full
                     bg-cyan-400/60
                     flex-shrink-0
                     transition-all duration-300
