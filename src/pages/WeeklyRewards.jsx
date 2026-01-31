@@ -23,7 +23,7 @@ const WeeklyRewards = () => {
     }))
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#001423] via-[#001625] to-[#001a30] relative overflow-hidden flex flex-col items-center !px-6 !pb-32 !pt-[90px]">
+        <div className="min-h-screen bg-gradient-to-br from-[#001423] via-[#001625] to-[#001a30] relative overflow-hidden flex flex-col items-center !px-6 !pb-32 !pt-16 md:!pt-[90px]">
             {/* GLOWING ORBS BACKGROUND */}
             {orbs.map((o) => (
                 <div

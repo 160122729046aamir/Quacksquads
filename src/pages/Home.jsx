@@ -117,7 +117,7 @@ const Home = () => {
     }, [isMobile]);
 
     return (
-        <div ref={containerRef} className="underwater-bg relative overflow-hidden min-h-screen flex flex-col items-center px-4 pb-32" style={{ paddingTop: '90px' }}>
+        <div ref={containerRef} className="underwater-bg relative overflow-hidden min-h-screen flex flex-col items-center px-4 pb-32 !pt-16 md:!pt-[90px]">
             {/* Light Beams */}
             {lightBeams.map((beam, i) => (
                 <div

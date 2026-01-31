@@ -10,7 +10,7 @@ const Vision = () => {
                 flex flex-col items-center
                 !px-6
                 !pb-32
-                !pt-[90px]
+                !pt-16 md:!pt-[90px]
             "
         >
             {/* Ambient fog */}

@@ -56,7 +56,7 @@ const Roadmap = () => {
     }
 
     return (
-        <div className="underwater-bg min-h-screen relative overflow-hidden !px-6 !pb-32 !pt-24 flex justify-center">
+        <div className="underwater-bg min-h-screen relative overflow-hidden !px-6 !pb-32 !pt-16 md:!pt-24 flex justify-center">
             <div className="depth-fog" />
 
             <div className="max-w-6xl w-full relative z-10">

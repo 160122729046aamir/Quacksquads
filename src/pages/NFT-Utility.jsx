@@ -10,7 +10,7 @@ const NFT_Utility = () => {
                 flex flex-col items-center
                 !px-6
                 !pb-32
-                !pt-22 md:!pt-22 lg:!pt-24
+                !pt-14 md:!pt-22 lg:!pt-24
             "
         >
             <div className="depth-fog" />
@@ -214,7 +214,7 @@ const NFT_Utility = () => {
                         ))}
                     </div>
                 </div>
-                
+
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ const Platform = () => {
             className="
         underwater-bg min-h-screen relative overflow-hidden
         !px-6
-        !pt-22 md:!pt-22 lg:!pt-26
+        !pt-14 md:!pt-22 lg:!pt-26
         !pb-32
       "
         >
