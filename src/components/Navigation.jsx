@@ -120,7 +120,7 @@ const Navigation = () => {
             <div
                 className={`
                     md:hidden fixed top-4 left-4 z-50
-                    flex items-center !gap-2
+                    flex items-center !gap-1
                     mobile-brand
                 `}
             >
@@ -223,7 +223,7 @@ const Navigation = () => {
                         bg-[#001321]/95
                         border-t border-cyan-500/30
                         shadow-[0_0_40px_rgba(0,245,255,0.5)]
-                        rounded-t-3xl
+                        rounded-3xl
                         transform transition-transform duration-400 ease-out
                         flex flex-col
                         !px-6 !pt-16 !pb-6
@@ -312,7 +312,7 @@ const Navigation = () => {
                     </div>
 
                     {/* Socials centered at bottom using image icons */}
-                    <div className="!mt-6">
+                    <div className="!mt-3">
                         <div className="flex items-center justify-center !gap-5">
                             {/* Discord */}
                             <a
@@ -321,7 +321,7 @@ const Navigation = () => {
                                 rel="noreferrer"
                                 className={`
                                     relative flex items-center justify-center
-                                    w-12 h-12 rounded-full
+                                    w-13 h-13 rounded-full
                                     bg-[#111827] border border-cyan-500/50
                                     shadow-[0_0_18px_rgba(0,245,255,0.45)]
                                     transition-all duration-300
@@ -343,8 +343,8 @@ const Navigation = () => {
                                 rel="noreferrer"
                                 className={`
                                     relative flex items-center justify-center
-                                    w-12 h-12 rounded-full
-                                    bg-[#020617] border border-cyan-500/50
+                                    w-13 h-13 rounded-full
+                                    bg-white border border-cyan-500/50
                                     shadow-[0_0_18px_rgba(0,245,255,0.45)]
                                     transition-all duration-300
                                     hover:scale-110 hover:border-cyan-200 hover:shadow-[0_0_26px_rgba(0,245,255,0.8)]
