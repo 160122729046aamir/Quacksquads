@@ -545,3 +545,219 @@
   0%   { transform: translate3d(0,0,0); }
   100% { transform: translate3d(-32px,-16px,0); }
 }
+
+/* Outer gradient frame + glow for Participation Shift card */
+.hero-card-frame {
+  background: linear-gradient(135deg, #22d3ee, #2dd4bf, #0ea5e9);
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.45);
+  position: relative;
+  overflow: visible;
+}
+
+/* Card body surface */
+.hero-card-surface {
+  background:
+    radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.26), transparent 62%),
+    radial-gradient(circle at 100% 100%, rgba(52, 211, 153, 0.22), transparent 60%),
+    rgba(2, 6, 23, 0.98);
+  border-radius: 1.05rem;
+  border: 1px solid rgba(45, 212, 191, 0.5);
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon orb */
+.hero-card-orb {
+  background: radial-gradient(circle at 30% 20%, #e0f2fe, #22d3ee, #0ea5e9);
+  box-shadow:
+    0 0 18px rgba(34, 211, 238, 0.9),
+    0 0 34px rgba(59, 130, 246, 0.7);
+}
+
+/* Title gradient */
+.hero-subtitle-gradient {
+  background-image: linear-gradient(to right, #a5f3fc, #6ee7b7, #7dd3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Orbital glow behind the card */
+.hero-card-orbit {
+  position: absolute;
+  inset: -40px;
+  pointer-events: none;
+  opacity: 0.8;
+  filter: blur(2px);
+  z-index: 0;
+}
+
+.hero-card-orbit-ring {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px dashed rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.5);
+  animation: heroOrbit 16s linear infinite;
+}
+
+.hero-card-orbit-ring-1 {
+  width: 220px;
+  height: 220px;
+  top: 5%;
+  right: 2%;
+}
+.hero-card-orbit-ring-2 {
+  width: 260px;
+  height: 260px;
+  top: 18%;
+  right: -8%;
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+.hero-card-orbit-ring-3 {
+  width: 180px;
+  height: 180px;
+  top: -4%;
+  right: 18%;
+  border-style: solid;
+  border-color: rgba(34, 211, 238, 0.3);
+  animation-duration: 28s;
+}
+
+/* Status row at bottom of Participation Shift card */
+.hero-status-row {
+  position: relative;
+}
+
+.hero-status-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(34, 211, 238, 0.7),
+    rgba(45, 212, 191, 0.6),
+    transparent
+  );
+}
+
+.hero-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #22d3ee;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.9);
+  animation: heroStatusPulse 1.2s ease-in-out infinite;
+}
+
+/* Shimmer that runs across the frame */
+.hero-card-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(248, 250, 252, 0.75), transparent);
+  opacity: 0;
+  mix-blend-mode: soft-light;
+  transform: translateX(-140%);
+  animation: heroCardShimmer 10s ease-in-out infinite;
+}
+
+/* Legacy vs new model cards inside Participation Shift card */
+.legacy-card {
+  background:
+    radial-gradient(circle at 0 0, rgba(248, 113, 113, 0.25), transparent 60%),
+    rgba(127, 29, 29, 0.6);
+  border: 1px solid rgba(248, 113, 113, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.legacy-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 100% 0, rgba(248, 113, 113, 0.28), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+.legacy-card:hover::after {
+  opacity: 1;
+}
+
+.legacy-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #fecaca, #f87171);
+  box-shadow: 0 0 14px rgba(248, 113, 113, 0.9);
+}
+
+.newmodel-card {
+  background:
+    radial-gradient(circle at 100% 0, rgba(52, 211, 153, 0.32), transparent 60%),
+    radial-gradient(circle at 0 100%, rgba(16, 185, 129, 0.22), transparent 60%),
+    rgba(6, 78, 59, 0.7);
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+.newmodel-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, rgba(52, 211, 153, 0.35), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+.newmodel-card:hover::after {
+  opacity: 1;
+}
+
+.newmodel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #bbf7d0, #4ade80);
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.9);
+}
+
+/* Animations for card */
+@keyframes heroOrbit {
+  0% {
+    transform: rotate(0deg) translateZ(0);
+  }
+  100% {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+@keyframes heroStatusPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes heroCardShimmer {
+  0% {
+    opacity: 0;
+    transform: translateX(-140%);
+  }
+  10% {
+    opacity: 0.5;
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}

@@ -136,20 +136,27 @@ const Introduction = () => {
                         </div>
                     </div>
 
-                    {/* RIGHT: "PARTICIPATION SHIFT" CARD – TOP LINE REMOVED */}
+                    {/* RIGHT: "PARTICIPATION SHIFT" CARD – ENHANCED */}
                     <div className="md:w-1/2 reveal reveal-delay-1">
-                        <div className="relative rounded-2xl !p-[1.5px] bg-gradient-to-br from-cyan-400 via-teal-500 to-blue-600 shadow-[0_0_36px_rgba(0,245,255,0.28)]">
-                            <div className="relative rounded-2xl bg-slate-950/95 backdrop-blur-xl !px-6 !py-6 md:!px-7 md:!py-7 border border-cyan-500/50">
-                                {/* Header (no top accent line now) */}
+                        {/* Orbital glow behind the card */}
+                        <div className="hero-card-orbit">
+                            <div className="hero-card-orbit-ring hero-card-orbit-ring-1" />
+                            <div className="hero-card-orbit-ring hero-card-orbit-ring-2" />
+                            <div className="hero-card-orbit-ring hero-card-orbit-ring-3" />
+                        </div>
+
+                        <div className="relative rounded-2xl !p-[1.5px] hero-card-frame">
+                            <div className="relative rounded-2xl hero-card-surface !px-6 !py-6 md:!px-7 md:!py-7">
+                                {/* Header */}
                                 <div className="flex items-center justify-start !mb-5 !gap-3">
-                                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 via-teal-400 to-blue-500 shadow-[0_0_18px_rgba(34,211,238,0.8)]">
+                                    <div className="flex h-11 w-11 items-center justify-center rounded-xl hero-card-orb">
                                         <span className="text-2xl">🌊</span>
                                     </div>
                                     <div className="text-left">
                                         <p className="text-[11px] uppercase tracking-[0.26em] text-cyan-200/80">
                                             Incentive Design
                                         </p>
-                                        <h2 className="bg-gradient-to-r from-cyan-300 via-teal-300 to-blue-300 bg-clip-text text-transparent text-lg md:text-xl font-semibold">
+                                        <h2 className="hero-subtitle-gradient text-lg md:text-xl font-semibold">
                                             The Participation Shift
                                         </h2>
                                     </div>
@@ -158,9 +165,9 @@ const Introduction = () => {
                                 {/* SIDE-BY-SIDE COMPARISON */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 !gap-4 text-sm md:text-[0.95rem]">
                                     {/* Legacy side */}
-                                    <div className="rounded-xl bg-red-950/45 border border-red-500/35 !px-4 !py-4">
+                                    <div className="rounded-xl legacy-card !px-4 !py-4">
                                         <div className="flex items-center !gap-2.5 !mb-3">
-                                            <span className="w-2 h-2 rounded-full bg-red-400 shadow-[0_0_12px_rgba(248,113,113,0.9)]" />
+                                            <span className="legacy-dot" />
                                             <span className="text-[11px] md:text-xs uppercase tracking-[0.22em] text-red-100/90">
                                                 Typical Markets
                                             </span>
@@ -168,26 +175,33 @@ const Introduction = () => {
                                         <ul className="space-y-2 text-[0.9rem] text-red-100/95">
                                             <li className="flex items-start !gap-2.5">
                                                 <span className="mt-[2px] text-red-300 text-base leading-none">✕</span>
-                                                <span>Rewards only at resolution → one‑off lucky outcomes matter most.</span>
+                                                <span>
+                                                    Rewards only at resolution → one‑off lucky outcomes matter most.
+                                                </span>
                                             </li>
                                             <li className="flex items-start !gap-2.5">
                                                 <span className="mt-[2px] text-red-300 text-base leading-none">✕</span>
-                                                <span>Each prediction is isolated → no concept of a long‑term track record.</span>
+                                                <span>
+                                                    Each prediction is isolated → no concept of a long‑term track
+                                                    record.
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>
 
                                     {/* New model side */}
-                                    <div className="rounded-xl bg-emerald-950/45 border border-emerald-500/40 !px-4 !py-4">
+                                    <div className="rounded-xl newmodel-card !px-4 !py-4">
                                         <div className="flex items-center !gap-2.5 !mb-3">
-                                            <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,0.9)]" />
+                                            <span className="newmodel-dot" />
                                             <span className="text-[11px] md:text-xs uppercase tracking-[0.22em] text-emerald-100/90">
                                                 This Platform
                                             </span>
                                         </div>
                                         <ul className="space-y-2 text-[0.9rem] text-emerald-100/95">
                                             <li className="flex items-start !gap-2.5">
-                                                <span className="mt-[2px] text-emerald-300 text-base leading-none">✓</span>
+                                                <span className="mt-[2px] text-emerald-300 text-base leading-none">
+                                                    ✓
+                                                </span>
                                                 <span>
                                                     Tracks{' '}
                                                     <span className="font-semibold text-emerald-100">
@@ -197,7 +211,9 @@ const Introduction = () => {
                                                 </span>
                                             </li>
                                             <li className="flex items-start !gap-2.5">
-                                                <span className="mt-[2px] text-emerald-300 text-base leading-none">✓</span>
+                                                <span className="mt-[2px] text-emerald-300 text-base leading-none">
+                                                    ✓
+                                                </span>
                                                 <span>
                                                     Weekly rewards, points, NFT multipliers & a delayed token launch →{' '}
                                                     <span className="font-semibold text-emerald-100">
@@ -211,14 +227,14 @@ const Introduction = () => {
                                 </div>
 
                                 {/* Bottom Status Row */}
-                                <div className="relative !mt-6 !pt-3">
-                                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/45 to-transparent" />
+                                <div className="relative !mt-6 !pt-3 hero-status-row">
+                                    <div className="hero-status-line" />
                                     <div className="flex justify-between items-center text-[11px] md:text-xs uppercase tracking-[0.2em]">
                                         <span className="text-cyan-200/85 font-semibold">
                                             Consistency &gt; Luck
                                         </span>
                                         <div className="flex items-center !gap-2.5">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.9)] animate-pulse" />
+                                            <span className="hero-status-dot" />
                                             <span className="text-cyan-100/85 font-semibold">
                                                 Participation‑Weighted Rewards
                                             </span>
@@ -226,6 +242,9 @@ const Introduction = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Shimmer across the frame */}
+                            <div className="hero-card-shimmer" />
                         </div>
                     </div>
                 </div>
