@@ -245,7 +245,7 @@ const Home = () => {
                 </div>
 
                 {/* Footer */}
-                <p className="mt-16 text-gray-500 text-sm reveal reveal-delay-6">
+                <p className="!mt-16 text-gray-500 text-sm reveal reveal-delay-6">
                     © 2026 Deep Dive Labs — Exploring the Unknown Depths
                 </p>
             </div>
