@@ -20,7 +20,7 @@ function App() {
       <ScrollToTop />
       <Navigation isMuted={isMuted} setIsMuted={setIsMuted} />
       <Routes>
-        <Route path="/" element={<Home isMuted={isMuted} />} />
+        <Route path="/" element={<Home isMuted={isMuted} setIsMuted={setIsMuted} />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/intro" element={<Introduction />} />
         <Route path="/vision" element={<Vision />} />

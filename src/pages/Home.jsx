@@ -4,7 +4,7 @@ import '../effects.css';
 import '../glitch.css';
 import './Home.css';
 
-const Home = ({ isMuted = false }) => {
+const Home = ({ isMuted = false, setIsMuted }) => {
     const containerRef = useRef(null);
     const videoRef = useRef(null);
     const [displayedLines, setDisplayedLines] = useState([]);
@@ -248,6 +248,9 @@ const Home = ({ isMuted = false }) => {
                                         className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm cursor-pointer transition-opacity hover:bg-black/50"
                                         onClick={() => {
                                             setUserInteracted(true);
+                                            if (setIsMuted) {
+                                                setIsMuted(false); // Update parent state to unmute
+                                            }
                                             if (videoRef.current) {
                                                 videoRef.current.muted = false;
                                             }
