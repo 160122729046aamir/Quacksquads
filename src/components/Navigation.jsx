@@ -137,7 +137,7 @@ const Navigation = ({ isMuted, setIsMuted }) => {
             {location.pathname === '/' && (
                 <div
                     className={`
-                        md:hidden fixed top-4 left-4 right-20 z-50
+                        md:hidden fixed top-4 left-4 right-16 z-50
                         flex items-center justify-between
                         mobile-brand
                     `}
