@@ -305,7 +305,7 @@ const Home = ({ isMuted = false, setIsMuted }) => {
 
                 {/* Footer */}
                 <p className="!mt-6 text-gray-500 text-sm reveal reveal-delay-6">
-                    © 2026 Deep Dive Labs — Exploring the Unknown Depths
+                    © 2026 Deep Dive Labs — Exploring the Unknown Depths.
                 </p>
             </div>
         </div>
