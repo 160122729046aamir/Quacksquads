@@ -4,12 +4,14 @@ import '../effects.css';
 import '../glitch.css';
 import './Home.css';
 
-const Home = () => {
+const Home = ({ isMuted = false }) => {
     const containerRef = useRef(null);
+    const videoRef = useRef(null);
     const [displayedLines, setDisplayedLines] = useState([]);
     const [currentLineIndex, setCurrentLineIndex] = useState(0);
     const [currentCharIndex, setCurrentCharIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [userInteracted, setUserInteracted] = useState(false);
 
     const logLines = [
         "INITIALIZING_SYSTEM...",
@@ -62,6 +64,33 @@ const Home = () => {
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
+
+    // Handle video playback
+    useEffect(() => {
+        if (videoRef.current) {
+            const playVideo = async () => {
+                try {
+                    // Start muted to comply with autoplay policies
+                    if (!userInteracted) {
+                        videoRef.current.muted = true;
+                    } else {
+                        videoRef.current.muted = isMuted;
+                    }
+                    await videoRef.current.play();
+                } catch (err) {
+                    console.log("Video autoplay failed:", err);
+                }
+            };
+            playVideo();
+        }
+    }, [isMuted, userInteracted]);
+
+    // Sync mute state with video
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = isMuted;
+        }
+    }, [isMuted]);
 
     // Generate bubbles with magnetic effect - Reduced count on mobile
     const bubbles = Array.from({ length: isMobile ? 10 : 30 }, (_, i) => ({
@@ -187,23 +216,46 @@ const Home = () => {
 
                 {/* Character with Glitch Effect and System Log */}
                 <div className="!mb-12 reveal reveal-delay-3 w-full grid grid-cols-1 md:grid-cols-2 !gap-y-12 md:gap-8 items-center max-w-5xl !mx-auto" style={{ marginBottom: '3rem' }}>
-                    {/* Character Image with Scanlines and Particles */}
+                    {/* Character Image/Video with Scanlines and Particles */}
                     <div className="relative flex justify-center md:justify-end group">
                         {/* Floating Glitch Particles around character */}
                         <div className="particle absolute" style={{ top: '10%', right: '15%', width: '8px', height: '8px', background: '#00f5ff', animation: 'float 3s ease-in-out infinite' }}></div>
                         <div className="particle absolute" style={{ top: '25%', left: '20%', width: '6px', height: '6px', background: '#39ff14', animation: 'float 4s ease-in-out infinite 0.5s' }}></div>
 
-                        {/* Character Image Container */}
+                        {/* Character Image/Video Container */}
                         <div className="relative scanlines rounded-full overflow-hidden character-glitch-wrapper transition-transform duration-500 group-hover:scale-105 shadow-[0_0_60px_rgba(0,245,255,0.4)]" style={{ width: '320px', height: '320px' }}>
-                            <img
-                                src="/assets/character.png"
-                                alt="Deep Dive Operative"
-                                className="w-full h-full object-cover character-glitch"
-                                style={{
-                                    border: '4px solid var(--cyan-glow)',
-                                    borderRadius: '50%'
-                                }}
-                            />
+                            <>
+                                <video
+                                    ref={videoRef}
+                                    src="/assets/QuackSquads.mp4"
+                                    className="w-full h-full object-cover character-glitch"
+                                    style={{
+                                        border: '4px solid var(--cyan-glow)',
+                                        borderRadius: '50%'
+                                    }}
+                                    autoPlay
+                                    loop
+                                    playsInline
+                                    muted={isMuted}
+                                />
+                                {/* Click to Unmute Overlay */}
+                                {!userInteracted && (
+                                    <div
+                                        className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm cursor-pointer transition-opacity hover:bg-black/50"
+                                        onClick={() => {
+                                            setUserInteracted(true);
+                                            if (videoRef.current) {
+                                                videoRef.current.muted = false;
+                                            }
+                                        }}
+                                    >
+                                        <div className="text-center">
+                                            <div className="text-5xl mb-2 animate-pulse">🔊</div>
+                                            <p className="text-cyan-300 font-bold text-sm">Click to Enable Sound</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </>
                         </div>
                     </div>
 

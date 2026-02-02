@@ -7,7 +7,7 @@ import logo from '../../public/assets/Logo.png';
 import twitterIcon from '../../public/assets/twitter.png';
 import discordIcon from '../../public/assets/discord.png';
 
-const Navigation = () => {
+const Navigation = ({ isMuted, setIsMuted }) => {
     const location = useLocation();
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -116,6 +116,33 @@ const Navigation = () => {
                 </nav>
             </div>
 
+            {/* DESKTOP MUTE/UNMUTE BUTTON (top-right corner, only on home page) */}
+            {location.pathname === '/' && (
+                <button
+                    type="button"
+                    className={`
+                        hidden md:flex fixed top-20 right-4 z-50
+                        items-center justify-center
+                    `}
+                    onClick={() => setIsMuted(!isMuted)}
+                >
+                    <div
+                        className={`
+                            w-12 h-12 rounded-full
+                            bg-[#001a2e]/70 backdrop-blur-xl border border-cyan-500/40
+                            shadow-[0_0_25px_rgba(0,245,255,0.2)]
+                            flex items-center justify-center
+                            transition-all duration-300
+                            hover:scale-110 hover:border-cyan-400/60 hover:shadow-[0_0_40px_rgba(0,245,255,0.3)] active:scale-95
+                        `}
+                    >
+                        <span className="text-2xl">
+                            {isMuted ? '🔇' : '🔊'}
+                        </span>
+                    </div>
+                </button>
+            )}
+
             {/* MOBILE BRAND (top-left, always visible when in hamburger layout) */}
             <div
                 className={`
@@ -195,6 +222,33 @@ const Navigation = () => {
                 </div>
             </button>
 
+            {/* MUTE/UNMUTE BUTTON (below hamburger on mobile, only on home page) */}
+            {location.pathname === '/' && (
+                <button
+                    type="button"
+                    className={`
+                        md:hidden fixed top-[72px] right-4 z-50
+                        flex items-center justify-center
+                    `}
+                    onClick={() => setIsMuted(!isMuted)}
+                >
+                    <div
+                        className={`
+                            w-11 h-11 rounded-full
+                            bg-[#001426]/95 border border-cyan-400/70
+                            shadow-[0_0_16px_rgba(0,245,255,0.45)]
+                            flex items-center justify-center
+                            transition-all duration-300
+                            hover:scale-105 hover:border-cyan-200 hover:shadow-[0_0_20px_rgba(0,245,255,0.7)] active:scale-95
+                        `}
+                    >
+                        <span className="text-xl">
+                            {isMuted ? '🔇' : '🔊'}
+                        </span>
+                    </div>
+                </button>
+            )}
+
             {/* MOBILE FULLSCREEN OVERLAY MENU */}
             <div
                 className={`
@@ -246,10 +300,9 @@ const Navigation = () => {
                                             text-sm font-medium
                                             transition-all duration-300
                                             group
-                                            ${
-                                                isActive
-                                                    ? 'text-cyan-300 bg-cyan-500/10'
-                                                    : 'text-cyan-100/80 hover:text-cyan-50 hover:bg-cyan-500/5'
+                                            ${isActive
+                                                ? 'text-cyan-300 bg-cyan-500/10'
+                                                : 'text-cyan-100/80 hover:text-cyan-50 hover:bg-cyan-500/5'
                                             }
                                         `}
                                     >
@@ -261,10 +314,9 @@ const Navigation = () => {
                                                 text-lg
                                                 transition-all duration-300
                                                 group-hover:scale-110 group-hover:border-cyan-300 group-hover:shadow-[0_0_15px_rgba(0,245,255,0.6)]
-                                                ${
-                                                    isActive
-                                                        ? 'scale-110 border-cyan-300 shadow-[0_0_15px_rgba(0,245,255,0.7)]'
-                                                        : ''
+                                                ${isActive
+                                                    ? 'scale-110 border-cyan-300 shadow-[0_0_15px_rgba(0,245,255,0.7)]'
+                                                    : ''
                                                 }
                                             `}
                                         >

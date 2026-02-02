@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navigation from './components/Navigation';
@@ -12,12 +13,14 @@ import PredictionToEarn from './pages/PredictionToEarn';
 import WeeklyRewards from './pages/WeeklyRewards';
 
 function App() {
+  const [isMuted, setIsMuted] = useState(false); // Start unmuted
+
   return (
     <Router>
       <ScrollToTop />
-      <Navigation />
+      <Navigation isMuted={isMuted} setIsMuted={setIsMuted} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isMuted={isMuted} />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/intro" element={<Introduction />} />
         <Route path="/vision" element={<Vision />} />
