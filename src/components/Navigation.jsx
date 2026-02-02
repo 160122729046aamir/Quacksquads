@@ -12,10 +12,7 @@ const Navigation = ({ isMuted, setIsMuted }) => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const fullBrandText = 'quacksquads';
-    const [brandIndex, setBrandIndex] = useState(1); // start at "q"
-
-    // NEW: Coming Soon modal for Connect Wallet
+    // Coming Soon modal for Connect Wallet
     const [showComingSoon, setShowComingSoon] = useState(false);
 
     useEffect(() => {
@@ -30,21 +27,7 @@ const Navigation = ({ isMuted, setIsMuted }) => {
         setMenuOpen(false);
     }, [location.pathname]);
 
-    // Looping typing effect: q, qu, ..., quacksquads, q, ...
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setBrandIndex((prev) => {
-                if (prev >= fullBrandText.length) {
-                    return 1; // restart from first letter
-                }
-                return prev + 1;
-            });
-        }, 160);
 
-        return () => clearInterval(interval);
-    }, []);
-
-    const brandText = fullBrandText.slice(0, brandIndex);
 
     const navItems = [
         { name: 'Home', path: '/', icon: '🏠' },
@@ -150,61 +133,63 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                 </button>
             )}
 
-            {/* MOBILE BRAND (logo + typing + Connect Wallet on ALL pages) */}
-            <div
-                className={`
-                    md:hidden fixed top-4 left-4 right-20 z-50
-                    flex items-center justify-between
-                    mobile-brand
-                `}
-            >
-                <div className="flex items-center !gap-1">
-                    <img
-                        src={logo}
-                        alt="Logo"
-                        className="w-11 h-11 object-contain drop-shadow-[0_0_16px_rgba(34,211,238,0.9)]"
-                    />
-                    <div className="flex items-center">
-                        <span className="pixel-font text-cyan-100 text-lg tracking-wide brand-typing">
-                            {brandText}
-                        </span>
-                        <span className="brand-typing-cursor text-cyan-300 text-lg ml-[1px]">
-                            _
-                        </span>
-                    </div>
-                </div>
-
-                {/* Connect Wallet button – enhanced design */}
-                <button
-                    type="button"
-                    onClick={handleConnectWallet}
-                    className="
-                        group relative inline-flex items-center justify-center
-                        rounded-full
-                        text-[12px] font-bold
-                        !px-3.5 !py-2
-                        whitespace-nowrap
-                        overflow-hidden
-                        transition-all duration-300
-                        hover:scale-105
-                    "
+            {/* MOBILE BRAND (logo + typing + Connect Wallet only on home page) */}
+            {location.pathname === '/' && (
+                <div
+                    className={`
+                        md:hidden fixed top-4 left-4 right-20 z-50
+                        flex items-center justify-between
+                        mobile-brand
+                    `}
                 >
-                    {/* Animated gradient border */}
-                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 opacity-100 animate-spin-slow"></span>
+                    <div className="flex items-center !gap-1">
+                        <img
+                            src={logo}
+                            alt="Logo"
+                            className="w-11 h-11 object-contain drop-shadow-[0_0_16px_rgba(34,211,238,0.9)]"
+                        />
+                        <div className="flex items-center">
+                            <span className="pixel-font text-cyan-100 text-lg tracking-wide">
+                                quacksquads
+                            </span>
+                            <span className="brand-typing-cursor text-cyan-300 text-lg ml-[1px]">
+                                _
+                            </span>
+                        </div>
+                    </div>
 
-                    {/* Inner background with glass effect */}
-                    <span className="absolute inset-[2px] rounded-full bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-sm"></span>
+                    {/* Connect Wallet button – underwater theme with animations */}
+                    <button
+                        type="button"
+                        onClick={handleConnectWallet}
+                        className="
+                            group relative inline-flex items-center justify-center
+                            rounded-full
+                            text-[12px] font-bold
+                            !px-3.5 !py-2
+                            whitespace-nowrap
+                            overflow-hidden
+                            transition-all duration-300
+                            hover:scale-105 active:scale-95
+                        "
+                    >
+                        {/* Animated gradient border - underwater colors */}
+                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 opacity-100 animate-spin-slow"></span>
 
-                    {/* Glow effect */}
-                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 via-sky-500/20 to-blue-600/20 blur-xl group-hover:blur-2xl transition-all duration-300"></span>
+                        {/* Inner background with glass effect */}
+                        <span className="absolute inset-[2px] rounded-full bg-gradient-to-br from-[#001426]/95 via-[#001a2e]/95 to-[#001426]/95 backdrop-blur-sm"></span>
 
-                    {/* Content */}
-                    <span className="relative z-10 flex items-center !gap-1.5 bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">
-                        <span className="text-sm">🦊</span>
-                        <span>Connect</span>
-                    </span>
-                </button>
-            </div>
+                        {/* Underwater glow effect */}
+                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 via-teal-400/20 to-cyan-500/20 blur-xl group-hover:blur-2xl transition-all duration-300"></span>
+
+                        {/* Content */}
+                        <span className="relative z-10 flex items-center !gap-1.5 bg-gradient-to-r from-cyan-300 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+                            <span className="text-sm">💼</span>
+                            <span>Connect</span>
+                        </span>
+                    </button>
+                </div>
+            )}
 
             {/* MOBILE TOGGLER (top-right corner, spherical) */}
             <button
@@ -422,7 +407,7 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                             </a>
 
                             <a
-                                href="https://twitter.com"
+                                href="https://x.com/Quacksquads"
                                 target="_blank"
                                 rel="noreferrer"
                                 className={`
