@@ -15,6 +15,9 @@ const Navigation = ({ isMuted, setIsMuted }) => {
     const fullBrandText = 'quacksquads';
     const [brandIndex, setBrandIndex] = useState(1); // start at "q"
 
+    // NEW: Coming Soon modal for Connect Wallet
+    const [showComingSoon, setShowComingSoon] = useState(false);
+
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
@@ -53,6 +56,10 @@ const Navigation = ({ isMuted, setIsMuted }) => {
         { name: 'Vision', path: '/vision', icon: '👁️' },
         { name: 'Roadmap', path: '/roadmap', icon: '🗺️' },
     ];
+
+    const handleConnectWallet = () => {
+        setShowComingSoon(true);
+    };
 
     return (
         <>
@@ -143,27 +150,56 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                 </button>
             )}
 
-            {/* MOBILE BRAND (top-left, always visible when in hamburger layout) */}
+            {/* MOBILE BRAND (logo + typing + Connect Wallet on ALL pages) */}
             <div
                 className={`
-                    md:hidden fixed top-4 left-4 z-50
-                    flex items-center !gap-1
+                    md:hidden fixed top-4 left-4 right-20 z-50
+                    flex items-center justify-between
                     mobile-brand
                 `}
             >
-                <img
-                    src={logo}
-                    alt="Logo"
-                    className="w-11 h-11 object-contain drop-shadow-[0_0_16px_rgba(34,211,238,0.9)]"
-                />
-                <div className="flex items-center">
-                    <span className="pixel-font text-cyan-100 text-lg tracking-wide brand-typing">
-                        {brandText}
-                    </span>
-                    <span className="brand-typing-cursor text-cyan-300 text-lg ml-[1px]">
-                        _
-                    </span>
+                <div className="flex items-center !gap-1">
+                    <img
+                        src={logo}
+                        alt="Logo"
+                        className="w-11 h-11 object-contain drop-shadow-[0_0_16px_rgba(34,211,238,0.9)]"
+                    />
+                    <div className="flex items-center">
+                        <span className="pixel-font text-cyan-100 text-lg tracking-wide brand-typing">
+                            {brandText}
+                        </span>
+                        <span className="brand-typing-cursor text-cyan-300 text-lg ml-[1px]">
+                            _
+                        </span>
+                    </div>
                 </div>
+
+                {/* Connect Wallet button – now on ALL pages, with animation */}
+                <button
+                    type="button"
+                    onClick={handleConnectWallet}
+                    className="
+                        relative inline-flex items-center justify-center
+                        rounded-full
+                        bg-gradient-to-r from-cyan-400 via-sky-500 to-emerald-400
+                        text-slate-950
+                        text-[12px] font-semibold
+                        !px-3.5 !py-2
+                        shadow-[0_0_18px_rgba(34,211,238,0.8)]
+                        hover:shadow-[0_0_26px_rgba(34,211,238,1)]
+                        transition-all duration-300
+                        whitespace-nowrap
+                        overflow-hidden
+                        connect-wallet-animated
+                    "
+                >
+                    {/* shimmer */}
+                    <span className="connect-wallet-shimmer" />
+                    <span className="relative flex items-center gap-1.5">
+                        <span className="text-xs">🦊</span>
+                        <span>Connect Wallet</span>
+                    </span>
+                </button>
             </div>
 
             {/* MOBILE TOGGLER (top-right corner, spherical) */}
@@ -249,7 +285,7 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                 </button>
             )}
 
-            {/* MOBILE FULLSCREEN OVERLAY MENU */}
+            {/* MOBILE FULLSCREEN OVERLAY MENU (unchanged items) */}
             <div
                 className={`
                     md:hidden fixed inset-0 z-40
@@ -259,7 +295,6 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                         : 'opacity-0 pointer-events-none'}
                 `}
             >
-                {/* Dimmed / blurred background */}
                 <div
                     className={`
                         absolute inset-0
@@ -270,7 +305,6 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                     onClick={() => setMenuOpen(false)}
                 />
 
-                {/* Sliding panel */}
                 <div
                     className={`
                         absolute inset-x-0 top-0 bottom-0
@@ -284,7 +318,6 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                         ${menuOpen ? 'translate-y-0' : 'translate-y-full'}
                     `}
                 >
-                    {/* Menu items – scroll area */}
                     <div className="flex-1 overflow-y-auto no-scrollbar">
                         <div className="flex flex-col !gap-1">
                             {navItems.map((item) => {
@@ -306,7 +339,6 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                                             }
                                         `}
                                     >
-                                        {/* Icon bubble */}
                                         <span
                                             className={`
                                                 flex items-center justify-center w-10 h-10 rounded-full
@@ -323,7 +355,6 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                                             {item.icon}
                                         </span>
 
-                                        {/* Text + underline */}
                                         <div className="flex flex-col !ml-3">
                                             <span className="text-base">{item.name}</span>
                                             <span
@@ -348,7 +379,6 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                                             Open
                                         </span>
 
-                                        {/* Soft glow on hover */}
                                         <span
                                             className={`
                                                 absolute inset-0 rounded-2xl
@@ -363,10 +393,9 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                         </div>
                     </div>
 
-                    {/* Socials centered at bottom using image icons */}
+                    {/* Socials centered at bottom */}
                     <div className="!mt-3">
                         <div className="flex items-center justify-center !gap-5">
-                            {/* Discord */}
                             <a
                                 href="https://discord.com"
                                 target="_blank"
@@ -388,7 +417,6 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                                 />
                             </a>
 
-                            {/* Twitter / X */}
                             <a
                                 href="https://twitter.com"
                                 target="_blank"
@@ -413,6 +441,97 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                     </div>
                 </div>
             </div>
+
+            {/* COMING SOON OVERLAY (same layout as earlier) */}
+            {showComingSoon && (
+                <div
+                    className="
+                        platform-modal-backdrop
+                        fixed inset-0 z-60
+                        flex items-center justify-center
+                        !px-4
+                    "
+                    onClick={() => setShowComingSoon(false)}
+                >
+                    <div
+                        className="
+                            platform-modal-container
+                            relative
+                            rounded-3xl
+                            bg-slate-950/80
+                            border border-cyan-400/40
+                            backdrop-blur-3xl
+                            !px-6 !py-6 md:!px-8 md:!py-8
+                            max-w-md w-full
+                            overflow-hidden
+                        "
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="platform-modal-glow" />
+
+                        <div className="flex items-center justify-center !mb-4">
+                            <div className="platform-modal-orb">
+                                <div className="platform-modal-orb-inner">
+                                    <span className="text-2xl">🚀</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="text-center !mb-3">
+                            <p className="text-[11px] uppercase tracking-[0.28em] text-cyan-300/85 !mb-2">
+                                Coming Soon
+                            </p>
+                            <h2 className="text-xl font-semibold text-white !mb-2">
+                                Wallet Connection Is Almost Here
+                            </h2>
+                            <p className="text-sm text-gray-200 leading-relaxed">
+                                The wallet layer is in final testing. Soon, a single
+                                connection will unlock a real-time view of your predictions,
+                                streaks, NFT boosts, and weekly reward share — all on-chain
+                                and fully transparent.
+                            </p>
+                        </div>
+
+                        <div className="!mt-4 !mb-3">
+                            <div className="flex items-center justify-between !mb-1">
+                                <span className="text-[11px] text-cyan-100/90 uppercase tracking-[0.2em]">
+                                    Launch Progress
+                                </span>
+                                <span className="text-[11px] text-gray-200">Internal QA</span>
+                            </div>
+                            <div className="relative h-2 rounded-full bg-white/10 overflow-hidden">
+                                <div className="platform-modal-progress" />
+                            </div>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center !gap-2 !mt-3">
+                            <span className="platform-chip">Multi-chain support</span>
+                            <span className="platform-chip">Gas‑optimized routing</span>
+                            <span className="platform-chip">Non‑custodial security</span>
+                        </div>
+
+                        <div className="flex justify-center !mt-5">
+                            <button
+                                type="button"
+                                onClick={() => setShowComingSoon(false)}
+                                className="
+                                    inline-flex items-center justify-center
+                                    rounded-full
+                                    border border-cyan-400/50
+                                    !px-4 !py-2
+                                    text-[12px] font-medium
+                                    text-cyan-100
+                                    bg-slate-900/80
+                                    hover:bg-slate-900
+                                    transition-colors duration-200
+                                "
+                            >
+                                Got it — I’ll check back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

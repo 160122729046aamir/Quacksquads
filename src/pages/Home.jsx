@@ -65,17 +65,21 @@ const Home = ({ isMuted = false }) => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    // Reset user interaction state on component mount
+    useEffect(() => {
+        setUserInteracted(false);
+        if (videoRef.current) {
+            videoRef.current.muted = true;
+        }
+    }, []);
+
     // Handle video playback
     useEffect(() => {
         if (videoRef.current) {
             const playVideo = async () => {
                 try {
-                    // Start muted to comply with autoplay policies
-                    if (!userInteracted) {
-                        videoRef.current.muted = true;
-                    } else {
-                        videoRef.current.muted = isMuted;
-                    }
+                    // Always start muted if user hasn't interacted
+                    videoRef.current.muted = userInteracted ? isMuted : true;
                     await videoRef.current.play();
                 } catch (err) {
                     console.log("Video autoplay failed:", err);
@@ -85,12 +89,12 @@ const Home = ({ isMuted = false }) => {
         }
     }, [isMuted, userInteracted]);
 
-    // Sync mute state with video
+    // Sync mute state with video only if user has interacted
     useEffect(() => {
-        if (videoRef.current) {
+        if (videoRef.current && userInteracted) {
             videoRef.current.muted = isMuted;
         }
-    }, [isMuted]);
+    }, [isMuted, userInteracted]);
 
     // Generate bubbles with magnetic effect - Reduced count on mobile
     const bubbles = Array.from({ length: isMobile ? 10 : 30 }, (_, i) => ({
@@ -289,7 +293,7 @@ const Home = ({ isMuted = false }) => {
 
                 {/* Dive Button with Ripple Effect */}
                 <div className="reveal reveal-delay-5">
-                    <Link to="/discover">
+                    <Link to="/intro">
                         <button className="underwater-button relative ripple-container">
                             <span className="relative z-10">BEGIN DESCENT</span>
                         </button>
