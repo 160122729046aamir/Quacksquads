@@ -2134,33 +2134,3 @@
     opacity: 0.7;
   }
 }
-/* Animated Connect Wallet button (navigation) */
-.connect-wallet-animated {
-  position: relative;
-}
-
-.connect-wallet-animated:hover {
-  transform: translateY(-1px) scale(1.03);
-}
-
-.connect-wallet-animated:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.connect-wallet-shimmer {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.8),
-    transparent
-  );
-  transform: translateX(-130%);
-  transition: transform 0.7s ease-out;
-}
-
-.connect-wallet-animated:hover .connect-wallet-shimmer {
-  transform: translateX(130%);
-}

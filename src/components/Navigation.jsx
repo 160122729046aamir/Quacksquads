@@ -174,30 +174,34 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                     </div>
                 </div>
 
-                {/* Connect Wallet button – now on ALL pages, with animation */}
+                {/* Connect Wallet button – enhanced design */}
                 <button
                     type="button"
                     onClick={handleConnectWallet}
                     className="
-                        relative inline-flex items-center justify-center
+                        group relative inline-flex items-center justify-center
                         rounded-full
-                        bg-gradient-to-r from-cyan-400 via-sky-500 to-emerald-400
-                        text-slate-950
-                        text-[12px] font-semibold
+                        text-[12px] font-bold
                         !px-3.5 !py-2
-                        shadow-[0_0_18px_rgba(34,211,238,0.8)]
-                        hover:shadow-[0_0_26px_rgba(34,211,238,1)]
-                        transition-all duration-300
                         whitespace-nowrap
                         overflow-hidden
-                        connect-wallet-animated
+                        transition-all duration-300
+                        hover:scale-105
                     "
                 >
-                    {/* shimmer */}
-                    <span className="connect-wallet-shimmer" />
-                    <span className="relative flex items-center gap-1.5">
-                        <span className="text-xs">🦊</span>
-                        <span>Connect Wallet</span>
+                    {/* Animated gradient border */}
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 opacity-100 animate-spin-slow"></span>
+
+                    {/* Inner background with glass effect */}
+                    <span className="absolute inset-[2px] rounded-full bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-sm"></span>
+
+                    {/* Glow effect */}
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 via-sky-500/20 to-blue-600/20 blur-xl group-hover:blur-2xl transition-all duration-300"></span>
+
+                    {/* Content */}
+                    <span className="relative z-10 flex items-center !gap-1.5 bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">
+                        <span className="text-sm">🦊</span>
+                        <span>Connect</span>
                     </span>
                 </button>
             </div>
