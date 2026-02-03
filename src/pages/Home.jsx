@@ -124,15 +124,16 @@ const Home = ({ isMuted = false, setIsMuted }) => {
     const dropHighlights = [
         {
             label: 'Trait Systems',
-            value: '250+',
-            text: 'Layered trait sets tuned for recombination, storytelling, and visual experimentation.',
+            value: 'Evolving Layers',
+            text: 'Interlocking visual and narrative traits designed to be rerolled, merged, and recontextualized over time.',
         },
         {
             label: 'Story Events',
-            value: 'Multi‑Season',
-            text: 'Planned waves of lore drops that respond to how holders move and remix their squads.',
+            value: 'Responsive Seasons',
+            text: 'Lore chapters that adapt to how holders trade, reroll, and reshape their Quacksquads, rather than following a fixed script.',
         },
     ];
+
 
     return (
         <div
