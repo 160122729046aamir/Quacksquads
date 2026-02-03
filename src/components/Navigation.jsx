@@ -65,11 +65,11 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                         !mx-4 max-w-[95vw]
                         hover:shadow-[0_0_40px_rgba(0,245,255,0.3)] hover:border-cyan-400/60
                         flex items-center justify-center
-                        !px-6 !py-2
+                        !px-4 !py-1
                         overflow-visible
                     `}
                 >
-                    <div className="flex items-center !gap-6 overflow-x-auto no-scrollbar !py-1 !px-1 overflow-y-hidden">
+                    <div className="flex items-center !gap-4 overflow-x-auto no-scrollbar !py-1 !px-1 overflow-y-hidden">
                         {navItems.map((item) => {
                             const isActive = location.pathname === item.path;
                             return (
@@ -77,7 +77,7 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                                     key={item.name}
                                     to={item.path}
                                     className={`
-                                        relative !px-3.5 !py-1.5 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center !gap-2 group
+                                        relative !px-3 !py-1 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 flex items-center !gap-2 group
                                         ${isActive
                                             ? 'text-cyan-400 font-bold scale-105'
                                             : 'text-cyan-100/70 hover:text-cyan-200'}

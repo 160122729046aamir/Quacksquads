@@ -36,7 +36,7 @@ const PredictionToEarn = () => {
     ]
 
     return (
-        <div className="underwater-bg min-h-screen !px-6 !pb-32 !pt-16 md:!pt-[90px] relative overflow-hidden flex flex-col items-center">
+        <div className="underwater-bg min-h-screen !px-6 !pb-32 !pt-16 md:!pt-[70px] relative overflow-hidden flex flex-col items-center">
             {/* Light Beams */}
             {lightBeams.map((beam, i) => (
                 <div
