@@ -106,32 +106,7 @@ const Navigation = ({ isMuted, setIsMuted }) => {
                 </nav>
             </div>
 
-            {/* DESKTOP MUTE/UNMUTE BUTTON (top-right corner, only on home page) */}
-            {location.pathname === '/' && (
-                <button
-                    type="button"
-                    className={`
-                        hidden md:flex fixed top-20 right-4 z-50
-                        items-center justify-center
-                    `}
-                    onClick={() => setIsMuted(!isMuted)}
-                >
-                    <div
-                        className={`
-                            w-12 h-12 rounded-full
-                            bg-[#001a2e]/70 backdrop-blur-xl border border-cyan-500/40
-                            shadow-[0_0_25px_rgba(0,245,255,0.2)]
-                            flex items-center justify-center
-                            transition-all duration-300
-                            hover:scale-110 hover:border-cyan-400/60 hover:shadow-[0_0_40px_rgba(0,245,255,0.3)] active:scale-95
-                        `}
-                    >
-                        <span className="text-2xl">
-                            {isMuted ? '🔇' : '🔊'}
-                        </span>
-                    </div>
-                </button>
-            )}
+
 
             {/* MOBILE BRAND (logo + typing + Connect Wallet only on home page) */}
             {location.pathname === '/' && (

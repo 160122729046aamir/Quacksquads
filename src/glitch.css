@@ -482,3 +482,64 @@
     pointer-events: none;
     animation: scanlines 8s linear infinite;
 }
+
+/* Glitch Lines Animation for Video Background */
+@keyframes glitch-lines {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(2px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Character Glitch Effect for Videos */
+.character-glitch {
+    animation: character-glitch-anim 3s infinite;
+}
+
+@keyframes character-glitch-anim {
+
+    0%,
+    100% {
+        transform: translate(0);
+        filter: none;
+    }
+
+    10% {
+        transform: translate(-2px, 1px);
+    }
+
+    20% {
+        transform: translate(2px, -1px);
+    }
+
+    30% {
+        transform: translate(0);
+    }
+
+    40% {
+        filter: hue-rotate(5deg);
+    }
+
+    50% {
+        transform: translate(1px, -1px);
+    }
+
+    60% {
+        transform: translate(-1px, 1px);
+    }
+
+    70% {
+        transform: translate(0);
+        filter: none;
+    }
+}

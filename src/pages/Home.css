@@ -146,3 +146,414 @@
 .character-glitch-wrapper {
     animation: scan-distort 6s ease-in-out infinite;
 }
+
+/* -----------------------------------
+   HEADING – STRUCTURE & ANIMATION
+----------------------------------- */
+
+.home-title {
+    opacity: 0;
+    animation: home-title-in 0.7s ease-out 0.2s forwards;
+}
+
+@keyframes home-title-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.home-title-line {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(8px);
+    animation: home-title-line-in 0.85s cubic-bezier(0.26, 0.84, 0.43, 1.01) forwards;
+    text-shadow:
+        0 0 18px rgba(0, 0, 0, 0.9),
+        0 0 28px rgba(0, 0, 0, 0.9);
+}
+
+.home-title-line-1 {
+    animation-delay: 0.25s;
+}
+
+.home-title-line-2 {
+    animation-delay: 0.42s;
+}
+
+.home-title-line-3 {
+    animation-delay: 0.59s;
+}
+
+@keyframes home-title-line-in {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(10px);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateY(-3px);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Neutral white lines: top + bottom */
+.home-title-line-neutral {
+    color: #f9fafb;
+}
+
+/* Accent line (chain remembers) – cyan with glow */
+.home-title-line-accent {
+    /* Bright cyan color */
+    color: #00ffff !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+
+    /* Remove the oversized font - let it inherit from parent h1 */
+    font-size: inherit !important;
+
+    /* Ensure no background conflicts */
+    background: none !important;
+
+    /* Strong glow effect */
+    text-shadow:
+        0 0 20px rgba(0, 255, 255, 0.9),
+        0 0 40px rgba(0, 255, 255, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+
+    /* Ensure proper spacing */
+    padding: 0 !important;
+    margin: 0 !important;
+
+    animation: home-title-accent-pulse 4.5s ease-in-out 1.2s infinite alternate;
+}
+
+@keyframes home-title-accent-pulse {
+    0% {
+        filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 18px rgba(56, 189, 248, 1));
+    }
+}
+
+/* -----------------------------------
+   DESCRIPTION ANIMATIONS
+----------------------------------- */
+
+.home-sub {
+    opacity: 0;
+    animation: home-sub-in 0.75s ease-out 0.3s forwards;
+}
+
+@keyframes home-sub-in {
+    0% {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+    }
+
+    100% {
+        opacity: 0.98;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.home-sub-span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: home-sub-span-in 0.6s ease-out forwards;
+}
+
+.home-sub-span-1 {
+    animation-delay: 0.35s;
+}
+
+.home-sub-span-2 {
+    animation-delay: 0.4s;
+}
+
+@keyframes home-sub-span-in {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -----------------------------------
+   CTA WRAPPER ANIMATION
+----------------------------------- */
+
+.home-actions {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    filter: blur(6px);
+    animation: home-actions-in 0.85s cubic-bezier(0.22, 0.77, 0.42, 1.01) 0.5s forwards;
+}
+
+@keyframes home-actions-in {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+        filter: blur(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* -----------------------------------
+   PRIMARY BUTTON (JOIN)
+----------------------------------- */
+
+.home-btn-primary {
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    color: #020617;
+    border: 1px solid rgba(15, 23, 42, 0.9);
+    background-color: #f9fafb;
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.9),
+        0 0 24px rgba(248, 250, 252, 0.5);
+    transform-origin: center;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.home-btn-primary-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+            #ffffff,
+            #e0f2fe,
+            #bae6fd,
+            #7dd3fc,
+            #ffffff);
+    background-size: 100% 100%;
+    opacity: 0.9;
+    z-index: 0;
+}
+
+@keyframes home-btn-primary-bg-move {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* subtle inner edge highlight */
+.home-btn-primary-edge {
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    border: 1px solid rgba(248, 250, 252, 0.8);
+    mix-blend-mode: screen;
+    opacity: 0.85;
+}
+
+/* Shine sweep on hover */
+.home-btn-primary-sheen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+            transparent,
+            rgba(255, 255, 255, 1),
+            transparent);
+    transform: translateX(-150%);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        transform 0.7s ease,
+        opacity 0.35s ease;
+}
+
+.home-btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 22px 60px rgba(0, 0, 0, 1),
+        0 0 60px rgba(248, 250, 252, 1);
+    border-color: rgba(15, 23, 42, 1);
+}
+
+.home-btn-primary:hover .home-btn-primary-sheen {
+    opacity: 1;
+    transform: translateX(150%);
+}
+
+/* Idle pulse */
+.home-btn-primary {
+    animation: home-btn-primary-pulse 3.1s ease-in-out 2.1s infinite;
+}
+
+@keyframes home-btn-primary-pulse {
+    0% {
+        box-shadow:
+            0 14px 36px rgba(0, 0, 0, 0.7),
+            0 0 24px rgba(248, 250, 252, 0.5);
+    }
+
+    50% {
+        box-shadow:
+            0 22px 60px rgba(0, 0, 0, 1),
+            0 0 70px rgba(248, 250, 252, 1);
+    }
+
+    100% {
+        box-shadow:
+            0 14px 36px rgba(0, 0, 0, 0.7),
+            0 0 24px rgba(248, 250, 252, 0.5);
+    }
+}
+
+/* -----------------------------------
+   SECONDARY BUTTON (EXPLORE)
+----------------------------------- */
+
+.home-btn-secondary {
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    color: #e5f3ff;
+    border-color: rgba(148, 163, 184, 0.8);
+    background: #020617;
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.9),
+        0 0 22px rgba(15, 23, 42, 0.9);
+    transform-origin: center;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+}
+
+/* vivid internal gradient */
+.home-btn-secondary-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 0% 0%,
+            rgba(56, 189, 248, 0.5),
+            transparent 55%),
+        radial-gradient(circle at 100% 100%,
+            rgba(52, 211, 153, 0.5),
+            transparent 60%),
+        linear-gradient(135deg, #020617, #020617 40%, #0f172a 100%);
+    z-index: 0;
+}
+
+/* outer ring when hovered */
+.home-btn-secondary-ring {
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    top: -35%;
+    left: -35%;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.6);
+    box-shadow:
+        0 0 22px rgba(56, 189, 248, 0.9),
+        0 0 32px rgba(15, 23, 42, 1);
+    opacity: 0;
+    transform: scale(0.92);
+    pointer-events: none;
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+/* border flash */
+.home-btn-secondary-border {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(120deg,
+            rgba(148, 163, 184, 0.6),
+            rgba(56, 189, 248, 0.9),
+            rgba(52, 211, 153, 0.9),
+            rgba(148, 163, 184, 0.6));
+    opacity: 0;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.home-btn-secondary:hover {
+    transform: translateY(-3px) scale(1.05);
+    border-color: rgba(248, 250, 252, 1);
+    background: #000000;
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 1),
+        0 0 42px rgba(56, 189, 248, 0.9);
+}
+
+.home-btn-secondary:hover .home-btn-secondary-border {
+    opacity: 1;
+}
+
+.home-btn-secondary:hover .home-btn-secondary-ring {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Idle drift */
+.home-btn-secondary {
+    animation: home-btn-secondary-drift 4s ease-in-out 2.6s infinite alternate;
+}
+
+@keyframes home-btn-secondary-drift {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(-1.5px) scale(1.02);
+    }
+}
+
+/* -----------------------------------
+   RESPONSIVE
+----------------------------------- */
+
+@media (max-width: 768px) {
+    .home-title {
+        line-height: 1.15;
+    }
+
+    .home-sub {
+        font-size: 0.9rem;
+    }
+}

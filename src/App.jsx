@@ -13,7 +13,7 @@ import PredictionToEarn from './pages/PredictionToEarn';
 import WeeklyRewards from './pages/WeeklyRewards';
 
 function App() {
-  const [isMuted, setIsMuted] = useState(false); // Start unmuted
+  const [isMuted, setIsMuted] = useState(true); // Start muted by default
 
   return (
     <Router>
