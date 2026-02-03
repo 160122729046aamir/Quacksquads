@@ -131,7 +131,7 @@ const Home = ({ isMuted = false, setIsMuted }) => {
             label: 'Story Events',
             value: 'Responsive Seasons',
             text: 'Lore chapters that adapt to how holders trade, reroll, and reshape their Quacksquads, rather than following a fixed script.',
-        },
+        }
     ];
 
 
