@@ -108,8 +108,8 @@ const Navigation = ({ isMuted, setIsMuted }) => {
 
 
 
-            {/* MOBILE BRAND (logo + typing + Connect Wallet only on home page) */}
-            {location.pathname === '/' && (
+            {/* MOBILE BRAND (logo + typing + Connect Wallet on home and discover) */}
+            {(location.pathname === '/' || location.pathname === '/discover') && (
                 <div
                     className={`
                         md:hidden fixed top-4 left-4 right-16 z-50

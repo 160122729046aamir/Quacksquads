@@ -220,7 +220,7 @@ const Home = ({ isMuted = false, setIsMuted }) => {
                     <div className="relative w-full h-full scanlines">
                         <video
                             ref={videoRef}
-                            src="/assets/Aqua.mp4"
+                            src="/assets/AquaCompressed.mp4"
                             className="character-glitch"
                             autoPlay
                             loop
@@ -357,7 +357,7 @@ const Home = ({ isMuted = false, setIsMuted }) => {
                             </Link>
 
                             {/* Join Whitelist Button */}
-                            <Link to="/platform" className="w-full sm:w-auto">
+                            <Link to="/discover" className="w-full sm:w-auto">
                                 <button
                                     className="
                     home-btn-primary

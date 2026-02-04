@@ -23,23 +23,25 @@ const DiscoverForm = () => {
     e.preventDefault();
     setIsDiving(true);
 
-    console.log('Diving deeper:', formData);
+    console.log('Whitelist submission:', formData);
 
+    // Simulate async processing
     setTimeout(() => {
       setIsDiving(false);
       setShowSuccess(true);
-      alert('🌊 Welcome to the Deep! Your coordinates have been logged.');
 
-      setTimeout(() => setShowSuccess(false), 3000);
-    }, 2500);
+      alert('✅ Whitelist request received. Your signal is being verified.');
+
+      setTimeout(() => setShowSuccess(false), 3200);
+    }, 2200);
   };
 
   return (
     <form onSubmit={handleSubmit} className="!space-y-6 sm:!space-y-7">
-      {/* Twitter */}
+      {/* Twitter / X */}
       <div className="reveal reveal-delay-1">
         <label className="block text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cyan-300/80 !mb-2 font-semibold">
-          🐠 Twitter Explorer ID
+          🐦 X / Twitter Handle
         </label>
 
         <div className="relative group">
@@ -48,7 +50,7 @@ const DiscoverForm = () => {
             name="twitter_username"
             value={formData.twitter_username}
             onChange={handleChange}
-            placeholder="@deep_explorer"
+            placeholder="@Quacksquads_fan"
             required
             className="
               w-full
@@ -62,12 +64,12 @@ const DiscoverForm = () => {
               placeholder-gray-500
               transition-all duration-300
               focus:outline-none
-              focus:border-cyan-400/50
-              focus:shadow-[0_0_25px_rgba(34,211,238,0.35)]
+              focus:border-cyan-400/60
+              focus:shadow-[0_0_25px_rgba(34,211,238,0.4)]
               group-hover:border-white/30
             "
           />
-          <span className="absolute right-3.5 sm:right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
+          <span className="absolute !right-3.5 sm:!right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
             @
           </span>
         </div>
@@ -76,7 +78,7 @@ const DiscoverForm = () => {
       {/* Tweet */}
       <div className="reveal reveal-delay-2">
         <label className="block text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cyan-300/80 !mb-2 font-semibold">
-          🔗 Signal Beacon Link
+          📡 Whitelist Post Link
         </label>
 
         <div className="relative group">
@@ -85,7 +87,7 @@ const DiscoverForm = () => {
             name="tweet_link"
             value={formData.tweet_link}
             onChange={handleChange}
-            placeholder="https://twitter.com/..."
+            placeholder="https://x.com/Quacksquads/status/..."
             required
             className="
               w-full
@@ -99,12 +101,12 @@ const DiscoverForm = () => {
               placeholder-gray-500
               transition-all duration-300
               focus:outline-none
-              focus:border-cyan-400/50
-              focus:shadow-[0_0_25px_rgba(34,211,238,0.35)]
+              focus:border-cyan-400/60
+              focus:shadow-[0_0_25px_rgba(34,211,238,0.4)]
               group-hover:border-white/30
             "
           />
-          <span className="absolute right-3.5 sm:right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
+          <span className="absolute !right-3.5 sm:!right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
             🔗
           </span>
         </div>
@@ -113,7 +115,7 @@ const DiscoverForm = () => {
       {/* Wallet */}
       <div className="reveal reveal-delay-3">
         <label className="block text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cyan-300/80 !mb-2 font-semibold">
-          💎 Deep Vault Address
+          💼 Wallet for Allocation
         </label>
 
         <div className="relative group">
@@ -122,7 +124,7 @@ const DiscoverForm = () => {
             name="wallet_address"
             value={formData.wallet_address}
             onChange={handleChange}
-            placeholder="0x..."
+            placeholder="Enter your Solana wallet address (e.g. 4f3Y...9KpL)"
             required
             className="
               w-full
@@ -136,13 +138,13 @@ const DiscoverForm = () => {
               placeholder-gray-500
               transition-all duration-300
               focus:outline-none
-              focus:border-cyan-400/50
-              focus:shadow-[0_0_25px_rgba(34,211,238,0.35)]
+              focus:border-cyan-400/60
+              focus:shadow-[0_0_25px_rgba(34,211,238,0.4)]
               group-hover:border-white/30
             "
           />
-          <span className="absolute right-3.5 sm:right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
-            💎
+          <span className="absolute !right-3.5 sm:!right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
+            💳
           </span>
         </div>
       </div>
@@ -157,23 +159,24 @@ const DiscoverForm = () => {
             rounded-xl
             !py-2.5 sm:!py-3
             text-sm sm:text-base
-            font-bold tracking-widest
-            text-black
+            font-bold
+            tracking-[0.25em]
+            text-slate-950
             bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400
             transition-all duration-300
-            hover:shadow-[0_0_35px_rgba(34,211,238,0.6)]
+            hover:shadow-[0_0_35px_rgba(34,211,238,0.7)]
             hover:-translate-y-0.5
-            disabled:opacity-70
+            disabled:opacity-80
           "
         >
           {isDiving ? (
-            <span className="flex items-center justify-center gap-3">
-              <span className="animate-pulse">🌊</span>
-              DESCENDING
-              <span className="animate-pulse">🌊</span>
+            <span className="flex items-center justify-center !gap-3">
+              <span className="animate-pulse">🚀</span>
+              VERIFYING SIGNAL
+              <span className="animate-pulse">🚀</span>
             </span>
           ) : (
-            '🫧 DIVE DEEPER 🫧'
+            'REQUEST WHITELIST ACCESS'
           )}
         </button>
 
@@ -188,7 +191,7 @@ const DiscoverForm = () => {
       {/* Success */}
       {showSuccess && (
         <div className="text-center text-cyan-300 text-xs sm:text-sm font-semibold animate-fade-in">
-          🌊 Coordinates received. Welcome to the Deep.
+          ✅ Signal received. Your whitelist request is in review.
         </div>
       )}
     </form>
