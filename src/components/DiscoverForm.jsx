@@ -19,17 +19,37 @@ const DiscoverForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsDiving(true);
 
-    console.log('Whitelist submission:', formData);
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxcQlSh9dJBMkox7DqYlnVebAHnrV9A95ysmGKyxLFoaOLLyzFWCYZ9QbsR8e_n_TKA/exec';
 
-    setTimeout(() => {
+    try {
+      const formPayload = new FormData();
+      formPayload.append('twitter_username', formData.twitter_username);
+      formPayload.append('tweet_link', formData.tweet_link);
+      formPayload.append('wallet_address', formData.wallet_address);
+
+      await fetch(scriptURL, {
+        method: 'POST',
+        body: formPayload,
+        mode: 'no-cors',
+      });
+
+      setFormData({
+        twitter_username: '',
+        tweet_link: '',
+        wallet_address: '',
+      });
+
       setIsDiving(false);
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 3200);
-    }, 2200);
+    } catch (error) {
+      console.error('Error submitting to Google Sheets:', error);
+      setIsDiving(false);
+    }
   };
 
   return (
