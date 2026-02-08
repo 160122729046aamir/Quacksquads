@@ -1,5 +1,8 @@
+// DiscoverForm.jsx
 import React, { useState } from 'react';
 import '../effects.css';
+
+const WHITELIST_OPEN = false;
 
 const DiscoverForm = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +24,12 @@ const DiscoverForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Prevent submissions while keeping logic for future re-opening
+    if (!WHITELIST_OPEN) {
+      return;
+    }
+
     setIsDiving(true);
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxcQlSh9dJBMkox7DqYlnVebAHnrV9A95ysmGKyxLFoaOLLyzFWCYZ9QbsR8e_n_TKA/exec';
@@ -55,7 +64,7 @@ const DiscoverForm = () => {
   return (
     <div className="relative">
       {/* Success overlay animation */}
-      {showSuccess && (
+      {WHITELIST_OPEN && showSuccess && (
         <div
           className="
             success-overlay
@@ -154,6 +163,27 @@ const DiscoverForm = () => {
         </div>
       )}
 
+      {/* Closed state banner (kept separate so form stays for future use) */}
+      {!WHITELIST_OPEN && (
+        <div
+          className="
+            !mb-5
+            rounded-xl
+            border border-cyan-400/40
+            bg-slate-900/80
+            !px-4 !py-3
+            text-center
+          "
+        >
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] text-cyan-200/90 !mb-1">
+            Whitelist Closed
+          </p>
+          <p className="text-xs sm:text-sm text-slate-100">
+            Participant limit has been reached. This portal is temporarily closed and may reopen in the future.
+          </p>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="!space-y-6 sm:!space-y-7">
         {/* Twitter / X */}
         <div className="reveal reveal-delay-1">
@@ -169,6 +199,7 @@ const DiscoverForm = () => {
               onChange={handleChange}
               placeholder="@Quacksquads_fan"
               required
+              disabled={!WHITELIST_OPEN}
               className="
                 w-full
                 rounded-xl
@@ -184,6 +215,8 @@ const DiscoverForm = () => {
                 focus:border-cyan-400/60
                 focus:shadow-[0_0_25px_rgba(34,211,238,0.4)]
                 group-hover:border-white/30
+                disabled:opacity-60
+                disabled:cursor-not-allowed
               "
             />
             <span className="absolute !right-3.5 sm:!right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
@@ -206,6 +239,7 @@ const DiscoverForm = () => {
               onChange={handleChange}
               placeholder="https://x.com/Quacksquads/status/..."
               required
+              disabled={!WHITELIST_OPEN}
               className="
                 w-full
                 rounded-xl
@@ -221,6 +255,8 @@ const DiscoverForm = () => {
                 focus:border-cyan-400/60
                 focus:shadow-[0_0_25px_rgba(34,211,238,0.4)]
                 group-hover:border-white/30
+                disabled:opacity-60
+                disabled:cursor-not-allowed
               "
             />
             <span className="absolute !right-3.5 sm:!right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
@@ -243,6 +279,7 @@ const DiscoverForm = () => {
               onChange={handleChange}
               placeholder="Enter your Solana wallet address (e.g. 4f3Y...9KpL)"
               required
+              disabled={!WHITELIST_OPEN}
               className="
                 w-full
                 rounded-xl
@@ -258,6 +295,8 @@ const DiscoverForm = () => {
                 focus:border-cyan-400/60
                 focus:shadow-[0_0_25px_rgba(34,211,238,0.4)]
                 group-hover:border-white/30
+                disabled:opacity-60
+                disabled:cursor-not-allowed
               "
             />
             <span className="absolute !right-3.5 sm:!right-4 top-1/2 -translate-y-1/2 text-cyan-400/60 text-sm sm:text-base">
@@ -270,7 +309,7 @@ const DiscoverForm = () => {
         <div className="reveal reveal-delay-4 !pt-3 sm:!pt-4 relative">
           <button
             type="submit"
-            disabled={isDiving}
+            disabled={isDiving || !WHITELIST_OPEN}
             className="
               relative w-full
               rounded-xl
@@ -283,22 +322,27 @@ const DiscoverForm = () => {
               transition-all duration-300
               hover:shadow-[0_0_35px_rgba(34,211,238,0.7)]
               hover:-translate-y-0.5
-              disabled:opacity-80
+              disabled:opacity-70
+              disabled:cursor-not-allowed
             "
           >
-            {isDiving ? (
-              <span className="flex items-center justify-center !gap-3">
-                <span className="animate-pulse">🚀</span>
-                VERIFYING SIGNAL
-                <span className="animate-pulse">🚀</span>
-              </span>
+            {WHITELIST_OPEN ? (
+              isDiving ? (
+                <span className="flex items-center justify-center !gap-3">
+                  <span className="animate-pulse">🚀</span>
+                  VERIFYING SIGNAL
+                  <span className="animate-pulse">🚀</span>
+                </span>
+              ) : (
+                'REQUEST WHITELIST ACCESS'
+              )
             ) : (
-              'REQUEST WHITELIST ACCESS'
+              'WHITELIST CLOSED'
             )}
           </button>
 
           {/* Loading bar */}
-          {isDiving && (
+          {WHITELIST_OPEN && isDiving && (
             <div className="absolute left-0 right-0 -bottom-3 h-1 rounded-full overflow-hidden bg-white/10">
               <div className="h-full w-full bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-400 animate-pulse" />
             </div>
@@ -306,7 +350,7 @@ const DiscoverForm = () => {
         </div>
 
         {/* Inline success text */}
-        {showSuccess && (
+        {WHITELIST_OPEN && showSuccess && (
           <div className="text-center text-cyan-300 text-xs sm:text-sm font-semibold animate-fade-in">
             ✅ Signal received. Your whitelist request is in review.
           </div>

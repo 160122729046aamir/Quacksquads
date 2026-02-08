@@ -1,7 +1,10 @@
+// Discover.jsx
 import React from 'react';
 import DiscoverForm from '../components/DiscoverForm';
 import '../effects.css';
 import './Discover.css';
+
+const WHITELIST_OPEN = false;
 
 const Discover = () => {
     return (
@@ -260,7 +263,7 @@ const Discover = () => {
                                 </p>
                                 <p className="flex items-center !gap-2 text-xs sm:text-sm text-emerald-300 font-semibold">
                                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                                    Live · Limited Capacity
+                                    {WHITELIST_OPEN ? 'Live · Limited Capacity' : 'Closed · Capacity Reached'}
                                 </p>
                             </div>
                         </div>
